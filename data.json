@@ -1,43 +1,171 @@
 {
   "quotes": [
-    { "text": "都会熬过去的，正面面对，做好自己，熬一熬。所谓的低谷期，不过是庸人自扰。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "梦想只会被压制，它是不会消失的。有一天，当你努力了，那个梦想会来找你的。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "永远不要忘记自己有光，也永远不要忘记自己有梦。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "黑暗的时候记得开灯就不黑啦，别老往黑暗的地方看哦。", "source": "周深", "tag": "\ud83d\udc99 暖心叮嘱" },
-    { "text": "其实路很长，走的也很难。但是因为遇见了你们，所以也就变得不那么难了。", "source": "周深 \u00b7 对生米", "tag": "\ud83d\udc99 暖心叮嘱" },
-    { "text": "我觉得所有的不完美，到后面你都会发现它也很珍贵。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "梦做一半比较美，爱我的人早点睡。", "source": "周深", "tag": "\ud83c\udf19 晚安" },
-    { "text": "善良比聪明更难得，聪明是一种天赋，而善良是一种选择。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "知识不是粮食，是武器。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "不用当最好的，要当最开心的！", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "大家都要相信真心，要保护好自己这个力量！", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "为什么是该努力了？直接开始努力好不好。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "光有动力没用，还是要动起来哦！", "source": "周深", "tag": "\ud83d\udc99 暖心叮嘱" },
-    { "text": "面对，事情都会解决掉的。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "如果你是黑夜，你就有好多星星。", "source": "周深", "tag": "\u2b50 深深的诗" },
-    { "text": "没有什么是会一直烦你的，熬一熬就过去了。", "source": "周深", "tag": "\ud83c\udfa4 深深说" },
-    { "text": "少管我。", "source": "周深", "tag": "\ud83d\ude04 皮一下" },
-    { "text": "谢谢你们一直在，这条路因为有你们变得不孤单。", "source": "周深 \u00b7 演唱会", "tag": "\ud83d\udc99 暖心叮嘱" },
-    { "text": "感谢每一个为我停留的耳朵。", "source": "周深 \u00b7 演唱会", "tag": "\ud83d\udc99 暖心叮嘱" },
-    { "text": "我希望我再红一点，这样好多好歌才能被大家听到。", "source": "周深", "tag": "\ud83c\udfb5 关于音乐" }
+    {
+      "text": "都会熬过去的，正面面对，做好自己，熬一熬。所谓的低谷期，不过是庸人自扰。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "梦想只会被压制，它是不会消失的。有一天，当你努力了，那个梦想会来找你的。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "永远不要忘记自己有光，也永远不要忘记自己有梦。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "黑暗的时候记得开灯就不黑啦，别老往黑暗的地方看哦。",
+      "source": "周深",
+      "tag": "💙 暖心叮嘱"
+    },
+    {
+      "text": "其实路很长，走的也很难。但是因为遇见了你们，所以也就变得不那么难了。",
+      "source": "周深 · 对生米",
+      "tag": "💙 暖心叮嘱"
+    },
+    {
+      "text": "我觉得所有的不完美，到后面你都会发现它也很珍贵。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "梦做一半比较美，爱我的人早点睡。",
+      "source": "周深",
+      "tag": "🌙 晚安"
+    },
+    {
+      "text": "善良比聪明更难得，聪明是一种天赋，而善良是一种选择。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "知识不是粮食，是武器。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "不用当最好的，要当最开心的！",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "大家都要相信真心，要保护好自己这个力量！",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "为什么是该努力了？直接开始努力好不好。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "光有动力没用，还是要动起来哦！",
+      "source": "周深",
+      "tag": "💙 暖心叮嘱"
+    },
+    {
+      "text": "面对，事情都会解决掉的。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "如果你是黑夜，你就有好多星星。",
+      "source": "周深",
+      "tag": "⭐ 深深的诗"
+    },
+    {
+      "text": "没有什么是会一直烦你的，熬一熬就过去了。",
+      "source": "周深",
+      "tag": "🎤 深深说"
+    },
+    {
+      "text": "少管我。",
+      "source": "周深",
+      "tag": "😄 皮一下"
+    },
+    {
+      "text": "谢谢你们一直在，这条路因为有你们变得不孤单。",
+      "source": "周深 · 演唱会",
+      "tag": "💙 暖心叮嘱"
+    },
+    {
+      "text": "感谢每一个为我停留的耳朵。",
+      "source": "周深 · 演唱会",
+      "tag": "💙 暖心叮嘱"
+    },
+    {
+      "text": "我希望我再红一点，这样好多好歌才能被大家听到。",
+      "source": "周深",
+      "tag": "🎵 关于音乐"
+    }
   ],
   "cocoQuotes": [
-    { "text": "可可今天也想安安静静地待在你身边，不说话也没关系", "tag": "\ud83e\udd0d 可可陪伴" },
-    { "text": "嫑嫑用平底锅帮你把今天的烦恼全拍扁了！啪！", "tag": "\ud83d\udda4 嫑嫑出击" },
-    { "text": "可可帮你找了一个舒服的角落，坐下来发会儿呆吧", "tag": "\ud83e\udd0d 可可陪伴" },
-    { "text": "嫑嫑说：走走走，去看看那边！别一直待着不动！", "tag": "\ud83d\udda4 嫑嫑探险" },
-    { "text": "可可戴着小帽子，认认真真地帮你看了今天的风景", "tag": "\ud83e\udd0d 可可日记" },
-    { "text": "嫑嫑顶着煎蛋眼瞪了烦恼一眼，烦恼已经害怕了", "tag": "\ud83d\udda4 嫑嫑战报" },
-    { "text": "虽然今天没有演唱会，但可可一直在你身边呀", "tag": "\ud83e\udd0d 可可陪伴" },
-    { "text": "嫑嫑替你检查了——前方没有坏心情！全被嫑嫑赶跑了！", "tag": "\ud83d\udda4 嫑嫑战报" },
-    { "text": "可可闻到了花香，停下脚步等你一起看", "tag": "\ud83e\udd0d 可可日记" },
-    { "text": "嫑嫑把你不开心的事全煎成荷包蛋吃掉了！啊呜~", "tag": "\ud83d\udda4 嫑嫑魔法" },
-    { "text": "可可不会说很多话，但可可会一直一直待在这里", "tag": "\ud83e\udd0d 可可陪伴" },
-    { "text": "他们不受时间和距离的限制，可以一直待在你身边", "tag": "\ud83e\udd0d\ud83d\udda4 联合播报" },
-    { "text": "可可偷偷告诉你：深深说了，听他的歌会心情变好", "tag": "\ud83e\udd0d 可可小秘密" },
-    { "text": "嫑嫑提醒你：记得喝水！不喝水嫑嫑用平底锅敲你！", "tag": "\ud83d\udda4 嫑嫑提醒" },
-    { "text": "可可觉得你今天很棒——就算什么也没做，你在就很棒", "tag": "\ud83e\udd0d 可可陪伴" },
-    { "text": "世界很大，但有你们就不远", "tag": "\ud83e\udd0d\ud83d\udda4 联合播报" }
+    {
+      "text": "可可今天也想安安静静地待在你身边，不说话也没关系",
+      "tag": "🤍 可可陪伴"
+    },
+    {
+      "text": "嫑嫑用平底锅帮你把今天的烦恼全拍扁了！啪！",
+      "tag": "🖤 嫑嫑出击"
+    },
+    {
+      "text": "可可帮你找了一个舒服的角落，坐下来发会儿呆吧",
+      "tag": "🤍 可可陪伴"
+    },
+    {
+      "text": "嫑嫑说：走走走，去看看那边！别一直待着不动！",
+      "tag": "🖤 嫑嫑探险"
+    },
+    {
+      "text": "可可戴着小帽子，认认真真地帮你看了今天的风景",
+      "tag": "🤍 可可日记"
+    },
+    {
+      "text": "嫑嫑顶着煎蛋眼瞪了烦恼一眼，烦恼已经害怕了",
+      "tag": "🖤 嫑嫑战报"
+    },
+    {
+      "text": "虽然今天没有演唱会，但可可一直在你身边呀",
+      "tag": "🤍 可可陪伴"
+    },
+    {
+      "text": "嫑嫑替你检查了——前方没有坏心情！全被嫑嫑赶跑了！",
+      "tag": "🖤 嫑嫑战报"
+    },
+    {
+      "text": "可可闻到了花香，停下脚步等你一起看",
+      "tag": "🤍 可可日记"
+    },
+    {
+      "text": "嫑嫑把你不开心的事全煎成荷包蛋吃掉了！啊呜~",
+      "tag": "🖤 嫑嫑魔法"
+    },
+    {
+      "text": "可可不会说很多话，但可可会一直一直待在这里",
+      "tag": "🤍 可可陪伴"
+    },
+    {
+      "text": "他们不受时间和距离的限制，可以一直待在你身边",
+      "tag": "🤍🖤 联合播报"
+    },
+    {
+      "text": "可可偷偷告诉你：深深说了，听他的歌会心情变好",
+      "tag": "🤍 可可小秘密"
+    },
+    {
+      "text": "嫑嫑提醒你：记得喝水！不喝水嫑嫑用平底锅敲你！",
+      "tag": "🖤 嫑嫑提醒"
+    },
+    {
+      "text": "可可觉得你今天很棒——就算什么也没做，你在就很棒",
+      "tag": "🤍 可可陪伴"
+    },
+    {
+      "text": "世界很大，但有你们就不远",
+      "tag": "🤍🖤 联合播报"
+    }
   ],
   "tips": [
     "今天戴上耳机，把大鱼循环三遍开启新一天",
@@ -57,36 +185,373 @@
     "晚安前听一首雪落下的声音，安安静静地入睡"
   ],
   "songs": [
-    { "name": "大鱼", "mood": "空灵治愈", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004OnMfl0pMQa5", "neteaseId": "441491828" },
-    { "name": "浮光", "mood": "温暖浪漫", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001yjnPP3YDJaX", "neteaseId": "1824020873" },
-    { "name": "化身孤岛的鲸", "mood": "温柔坚定", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003qUsgB0H0Sds", "neteaseId": "449818741" },
-    { "name": "达拉崩吧", "mood": "超级欢乐", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001Qu8bY1gmpGb", "neteaseId": "1407551413" },
-    { "name": "起风了", "mood": "元气满满", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003DFRzr1MxlPl", "neteaseId": "1330348068" },
-    { "name": "花开忘忧", "mood": "忘记忧愁", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001ixVaO4MzJL1", "neteaseId": "1375727498" },
-    { "name": "光亮", "mood": "充满希望", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0034VYrt2aYuHh", "neteaseId": "1463165983" },
-    { "name": "和光同尘", "mood": "大气磅礴", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000loILb4WvAx4", "neteaseId": "1421191806" },
-    { "name": "有你在的世界", "mood": "温暖有力量", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001r6JDE0p3dqp", "neteaseId": "1810798048" },
-    { "name": "玫瑰与小鹿", "mood": "甜甜的", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000LzHOp2CdEwG", "neteaseId": "536099016" },
-    { "name": "雪落下的声音", "mood": "安静细腻", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003JA0Y21dbr50", "neteaseId": "1313354324" },
-    { "name": "欢颜", "mood": "初心之作", "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003WiNYH0yNxdN", "neteaseId": "31654476" }
+    {
+      "name": "大鱼",
+      "mood": "空灵治愈",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004OnMfl0pMQa5",
+      "neteaseId": "441491828"
+    },
+    {
+      "name": "浮光",
+      "mood": "温暖浪漫",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001yjnPP3YDJaX",
+      "neteaseId": "1824020873"
+    },
+    {
+      "name": "化身孤岛的鲸",
+      "mood": "温柔坚定",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003qUsgB0H0Sds",
+      "neteaseId": "449818741"
+    },
+    {
+      "name": "达拉崩吧",
+      "mood": "超级欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001Qu8bY1gmpGb",
+      "neteaseId": "1407551413"
+    },
+    {
+      "name": "起风了",
+      "mood": "元气满满",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003DFRzr1MxlPl",
+      "neteaseId": "1330348068"
+    },
+    {
+      "name": "花开忘忧",
+      "mood": "忘记忧愁",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001ixVaO4MzJL1",
+      "neteaseId": "1375727498"
+    },
+    {
+      "name": "光亮",
+      "mood": "充满希望",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0034VYrt2aYuHh",
+      "neteaseId": "1463165983"
+    },
+    {
+      "name": "和光同尘",
+      "mood": "大气磅礴",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000loILb4WvAx4",
+      "neteaseId": "1421191806"
+    },
+    {
+      "name": "有你在的世界",
+      "mood": "温暖有力量",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001r6JDE0p3dqp",
+      "neteaseId": "1810798048"
+    },
+    {
+      "name": "玫瑰与小鹿",
+      "mood": "甜甜的",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000LzHOp2CdEwG",
+      "neteaseId": "536099016"
+    },
+    {
+      "name": "雪落下的声音",
+      "mood": "安静细腻",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003JA0Y21dbr50",
+      "neteaseId": "1313354324"
+    },
+    {
+      "name": "欢颜",
+      "mood": "初心之作",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003WiNYH0yNxdN",
+      "neteaseId": "31654476"
+    }
   ],
   "skipAnims": [
-    { "emoji": "\ud83d\uddd1\ufe0f", "text": "烦恼已被扔进垃圾桶！", "cls": "a-crumble" },
-    { "emoji": "\ud83d\udca5", "text": "坏心情已被嫑嫑用平底锅拍碎！", "cls": "a-shatter" },
-    { "emoji": "\ud83d\ude80", "text": "烦恼已被发射到外太空！", "cls": "a-rocket" },
-    { "emoji": "\ud83c\udf00", "text": "不开心已被冲走！再见不送！", "cls": "a-flush" },
-    { "emoji": "\ud83c\udf73", "text": "烦恼已被嫑嫑煎成荷包蛋！", "cls": "a-crumble" },
-    { "emoji": "\ud83d\udc1f", "text": "坏心情已被大鱼吞掉了！", "cls": "a-flush" },
-    { "emoji": "\ud83e\udd0d", "text": "可可把烦恼悄悄藏起来了！", "cls": "a-shatter" },
-    { "emoji": "\ud83c\udfb5", "text": "烦恼已被周深的歌声融化！", "cls": "a-rocket" }
+    {
+      "emoji": "🗑️",
+      "text": "烦恼已被扔进垃圾桶！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "💥",
+      "text": "坏心情已被嫑嫑用平底锅拍碎！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🚀",
+      "text": "烦恼已被发射到外太空！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🌀",
+      "text": "不开心已被冲走！再见不送！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🍳",
+      "text": "烦恼已被嫑嫑煎成荷包蛋！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "🐟",
+      "text": "坏心情已被大鱼吞掉了！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🤍",
+      "text": "可可把烦恼悄悄藏起来了！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🎵",
+      "text": "烦恼已被周深的歌声融化！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🔥",
+      "text": "坏心情已被嫑嫑煎焦了！酥脆！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🌊",
+      "text": "烦恼被一条大鱼带走了！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "⚡",
+      "text": "不开心被闪电劈没了！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🎪",
+      "text": "烦恼被达拉崩吧变没了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🛡️",
+      "text": "嫑嫑用平底锅挡住了所有坏事！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "🧢",
+      "text": "可可戴上帽子把烦恼藏在帽子下面了！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🌪️",
+      "text": "烦恼被龙卷风卷走了！飞得老远！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🎵",
+      "text": "烦恼听了大鱼自己游走了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🍳",
+      "text": "嫑嫑把坏心情煎成了早餐！真香！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "🐋",
+      "text": "一条鲸鱼把烦恼吞进了深海！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🎤",
+      "text": "周深唱了一首歌，烦恼感动哭着走了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🌈",
+      "text": "烦恼被彩虹融化了！只剩下好心情！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🧹",
+      "text": "可可拿扫帚把烦恼扫出门了！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "💨",
+      "text": "嫑嫑一个喷嚏把烦恼吹飞了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🎈",
+      "text": "烦恼被绑在气球上飘走了！再见！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🏔️",
+      "text": "烦恼被和光同尘的气势震飞了！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🌸",
+      "text": "烦恼被花开忘忧的花瓣淹没了！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🔨",
+      "text": "嫑嫑抡起平底锅！烦恼已被锤扁！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🧊",
+      "text": "烦恼被冻成冰块丢进深海了！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "✂️",
+      "text": "可可用剪刀把烦恼剪成碎片了！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "🎭",
+      "text": "烦恼在达拉崩吧的舞步中迷路了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🌙",
+      "text": "烦恼被明月传说的仙气度化了！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🎂",
+      "text": "可可把烦恼烤成了蛋糕！还挺好吃！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "💣",
+      "text": "嫑嫑引爆了烦恼炸弹！轰！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🐟",
+      "text": "烦恼听到起风了就起飞了！再也回不来！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🏹",
+      "text": "嫑嫑一锅射出去！烦恼被击落了！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🌤️",
+      "text": "乌云散了！烦恼跟着乌云一起走了！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🃏",
+      "text": "可可变了个魔术！烦恼消失了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🍫",
+      "text": "可可把烦恼做成了巧克力吃掉了！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "🪄",
+      "text": "嫑嫑挥动平底锅魔杖！烦恼变没了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "📦",
+      "text": "可可把烦恼打包寄到了南极！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🎯",
+      "text": "嫑嫑用平底锅精准命中了烦恼！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🌋",
+      "text": "烦恼掉进火山里了！化成岩浆了！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🎶",
+      "text": "浮光的旋律把烦恼温柔地送走了！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🧁",
+      "text": "可可把烦恼揉进面团烤成了小蛋糕！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "💫",
+      "text": "烦恼被流星带走了！许个愿吧！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🐾",
+      "text": "可可踩了烦恼一脚！踩扁了！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "🎡",
+      "text": "烦恼坐上摩天轮飞走了！不用回来！",
+      "cls": "a-rocket"
+    },
+    {
+      "emoji": "🥊",
+      "text": "嫑嫑左勾拳右勾拳！烦恼KO！",
+      "cls": "a-shatter"
+    },
+    {
+      "emoji": "🌊",
+      "text": "化身孤岛的鲸把烦恼带去了大海！",
+      "cls": "a-flush"
+    },
+    {
+      "emoji": "🍞",
+      "text": "可可把烦恼揉成面包烤熟了！好香！",
+      "cls": "a-crumble"
+    },
+    {
+      "emoji": "⭐",
+      "text": "烦恼变成了星星！以后只会发光！",
+      "cls": "a-rocket"
+    }
   ],
   "dayConfig": {
-    "1": { "title": "跳过周一", "sub": "坚持住！\ud83d\udcaa", "btnText": "跳过周一", "cdTemplate": "距离周一结束还有 {hours} 小时 \u23f0 撑住！" },
-    "2": { "title": "周二加油", "sub": "最难的已经过去了 \u270c\ufe0f", "btnText": "赶走烦恼", "cdTemplate": "周一已经过去了！距离周五还有 3 天 \ud83d\udcaa" },
-    "3": { "title": "周三过半", "sub": "一周已经过半啦 \ud83c\udfaf", "btnText": "赶走烦恼", "cdTemplate": "本周已过半！距离周五还有 2 天 \ud83c\udfaf" },
-    "4": { "title": "周四冲刺", "sub": "明天就是周五了！\ud83c\udfc3", "btnText": "赶走烦恼", "cdTemplate": "明天就是周五了！最后一天冲刺 \ud83c\udfc3\ud83d\udca8" },
-    "5": { "title": "周五万岁", "sub": "你活过来了！\ud83c\udf89", "btnText": "庆祝周五", "cdTemplate": "\ud83c\udf89 周五了！你成功撑过了这周！" },
-    "6": { "title": "周末快乐", "sub": "快乐加倍 \u2600\ufe0f", "btnText": "享受周末", "cdTemplate": "周末快乐！听歌、发呆、做想做的事 \u2600\ufe0f" },
-    "0": { "title": "周日充电", "sub": "提前封印周一 \ud83d\udd2e", "btnText": "封印周一", "cdTemplate": "明天就是周一了……提前封印它！\ud83d\udd2e" }
+    "0": {
+      "title": "周日充电",
+      "sub": "提前封印周一 🔮",
+      "btnText": "封印周一",
+      "cdTemplate": "明天就是周一了……提前封印它！🔮"
+    },
+    "1": {
+      "title": "跳过周一",
+      "sub": "坚持住！💪",
+      "btnText": "跳过周一",
+      "cdTemplate": "距离周一结束还有 {hours} 小时 ⏰ 撑住！"
+    },
+    "2": {
+      "title": "周二加油",
+      "sub": "最难的已经过去了 ✌️",
+      "btnText": "赶走烦恼",
+      "cdTemplate": "周一已经过去了！距离周五还有 3 天 💪"
+    },
+    "3": {
+      "title": "周三过半",
+      "sub": "一周已经过半啦 🎯",
+      "btnText": "赶走烦恼",
+      "cdTemplate": "本周已过半！距离周五还有 2 天 🎯"
+    },
+    "4": {
+      "title": "周四冲刺",
+      "sub": "明天就是周五了！🏃",
+      "btnText": "赶走烦恼",
+      "cdTemplate": "明天就是周五了！最后一天冲刺 🏃💨"
+    },
+    "5": {
+      "title": "周五万岁",
+      "sub": "你活过来了！🎉",
+      "btnText": "庆祝周五",
+      "cdTemplate": "🎉 周五了！你成功撑过了这周！"
+    },
+    "6": {
+      "title": "周末快乐",
+      "sub": "快乐加倍 ☀️",
+      "btnText": "享受周末",
+      "cdTemplate": "周末快乐！听歌、发呆、做想做的事 ☀️"
+    }
   }
 }

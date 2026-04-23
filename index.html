@@ -539,7 +539,7 @@ if ('caches' in window) {
 <div class="overlay" id="shareModal">
   <div class="share-card" id="shareCardContent">
     <div class="share-emoji" id="shareEmoji">✨</div>
-    <div class="share-title">周一已跳过！</div>
+    <div class="share-title" id="shareTitle">今天也要加油！</div>
     <div class="share-date" id="shareDate"></div>
     <div class="share-quote" id="shareQuote"></div>
     <div class="share-footer">跳过周一 · 风雨同周，深情不移 💙</div>
@@ -795,23 +795,35 @@ function particles(x, y) {
 // ========== SKIP ANIMATION ==========
 function showSkip() {
   if (!DATA) return;
-  const ov = $('skipOverlay'), box = $('skipAnimation');
-  const a = rand(DATA.skipAnims);
-  const allQ = [...DATA.quotes, ...DATA.cocoQuotes];
-  const q = rand(allQ);
-  box.innerHTML = `
-    <div class="cal-destroy ${a.cls}">
-      <div class="cal-page">
-        <div class="cal-h">MONDAY</div>
-        <div class="cal-d">一</div>
-        <div class="cal-w">周一</div>
-      </div>
-    </div>
-    <div class="big-emoji">${a.emoji}</div>
-    <div class="skip-text">${a.text}</div>
-    <div class="skip-subtitle">（${new Date().getDay() === 1 ? '但明天还是要上班的哦 😘' : '烦恼拜拜，好心情来来 😘'}）</div>
-    <div class="skip-quote">"${q.text}"</div>
-    <div class="skip-quote-source">—— ${q.source || q.tag}</div>`;
+  var ov = $('skipOverlay'), box = $('skipAnimation');
+  var a = rand(DATA.skipAnims);
+  var allQ = [].concat(DATA.quotes, DATA.cocoQuotes);
+  var q = rand(allQ);
+  var d = new Date().getDay();
+  var calDays = ['日','一','二','三','四','五','六'];
+  var calEn = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var subtitles = {
+    0: '周一的封印已生效！明天稳了 🔮',
+    1: '但明天还是要上班的哦 😘',
+    2: '最难的周一已经过去了 ✌️',
+    3: '一周都过半了，稳住 🎯',
+    4: '明天就周五了，冲！🏃',
+    5: '周末快乐！你值得庆祝 🎉',
+    6: '周末就该这样放松 ☀️'
+  };
+  box.innerHTML =
+    '<div class="cal-destroy ' + a.cls + '">' +
+      '<div class="cal-page">' +
+        '<div class="cal-h">' + calEn[d] + '</div>' +
+        '<div class="cal-d">' + calDays[d] + '</div>' +
+        '<div class="cal-w">周' + calDays[d] + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="big-emoji">' + a.emoji + '</div>' +
+    '<div class="skip-text">' + a.text + '</div>' +
+    '<div class="skip-subtitle">（' + (subtitles[d] || '烦恼拜拜，好心情来来 😘') + '）</div>' +
+    '<div class="skip-quote">\u201C' + q.text + '\u201D</div>' +
+    '<div class="skip-quote-source">\u2014\u2014 ' + (q.source || q.tag) + '</div>';
   ov.classList.add('active');
   vib([50, 30, 50, 30, 100]);
   setTimeout(() => {
@@ -824,13 +836,28 @@ function showSkip() {
 }
 
 // ========== SHARE ==========
+function getShareTitle() {
+  var d = new Date().getDay();
+  var titles = {
+    0: '周一已被封印！',
+    1: '周一已跳过！',
+    2: '烦恼已赶走！',
+    3: '一周过半啦！',
+    4: '明天就周五了！',
+    5: '周五万岁！',
+    6: '周末快乐！'
+  };
+  return titles[d] || '今天也要加油！';
+}
+
 function showShare() {
   const now = new Date();
   const allQ = DATA ? [...DATA.quotes, ...DATA.cocoQuotes] : [];
-  const q = curQuote || (allQ.length ? rand(allQ) : { text: "周一加油！" });
-  $('shareEmoji').textContent = rand(['✨','🎵','💙','🍳','🐱','🌟']);
+  const q = curQuote || (allQ.length ? rand(allQ) : { text: "今天也要加油！" });
+  $('shareEmoji').textContent = rand(['✨','🎵','💙','🍳','🧢','🌟']);
+  $('shareTitle').textContent = getShareTitle();
   $('shareDate').textContent = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
-  $('shareQuote').textContent = `"${q.text}"`;
+  $('shareQuote').textContent = '\u201C' + q.text + '\u201D';
   $('shareModal').classList.add('active');
 }
 
@@ -892,8 +919,8 @@ function bindEvents() {
     // Vibrate
     vib(30);
 
-    // Show skip animation on first click and every 5 clicks
-    if (hitCount === 1 || hitCount % 5 === 0) {
+    // Show skip animation: first click always, then ~30% random chance
+    if (hitCount === 1 || Math.random() < 0.3) {
       setTimeout(showSkip, 200);
     }
 
