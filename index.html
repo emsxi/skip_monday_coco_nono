@@ -59,7 +59,7 @@
     .app {
       position: relative; z-index: 1;
       display: flex; flex-direction: column; align-items: center;
-      padding: 30px 20px 20px;
+      padding: 20px 16px 16px;
       min-height: 100vh; min-height: 100dvh;
     }
 
@@ -91,32 +91,6 @@
     }
     .header .subtitle {
       font-size: 12px; color: var(--primary-light); margin-top: 3px; opacity: 0.7;
-    }
-
-    /* ===== Character Gallery ===== */
-    .char-gallery {
-      display: flex; gap: 16px; margin-bottom: 14px;
-      justify-content: center;
-      padding: 4px 0; max-width: 360px; width: 100%;
-    }
-    .char-card {
-      text-align: center; cursor: pointer;
-      transition: transform 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .char-card:active { transform: scale(0.92); }
-    .char-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: var(--bg-card); border: 2px solid rgba(0,70,160,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; margin: 0 auto 4px;
-      overflow: hidden;
-    }
-    .char-avatar img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .char-name {
-      font-size: 11px; color: var(--text-light);
     }
 
     /* ===== Date ===== */
@@ -207,7 +181,6 @@
     .card-label.accent { color: var(--accent); }
 
     .quote-text { font-size: 14px; line-height: 1.7; color: var(--text); }
-    .quote-source { font-size: 10px; color: var(--primary-light); margin-top: 8px; opacity: 0.6; }
     .mascot-tag {
       display: inline-block; background: rgba(0,70,160,0.15);
       border: 1px solid rgba(0,70,160,0.2); border-radius: 20px;
@@ -456,22 +429,6 @@ if ('caches' in window) {
     <div class="subtitle">风雨同周，深情不移 💙 可可嫑嫑陪你每一天</div>
   </div>
 
-  <!-- Character Gallery -->
-  <div class="char-gallery" id="charGallery">
-    <div class="char-card" onclick="toast('🤍 可可安安静静地陪着你')">
-      <div class="char-avatar">
-        <img src="images/coco.svg" alt="周可可">
-      </div>
-      <div class="char-name">周可可</div>
-    </div>
-    <div class="char-card" onclick="toast('🖤 走走走，去看看那边！')">
-      <div class="char-avatar">
-        <img src="images/nono.svg" alt="周嫑嫑">
-      </div>
-      <div class="char-name">周嫑嫑</div>
-    </div>
-  </div>
-
   <!-- Date -->
   <div class="date-info">
     <div class="today" id="dateStr"></div>
@@ -498,7 +455,6 @@ if ('caches' in window) {
   <div class="card" id="quoteCard">
     <div class="card-label">🎵 周深说</div>
     <div class="quote-text" id="quoteText"><span class="loading">加载中...</span></div>
-    <div class="quote-source" id="quoteSource"></div>
     <div class="mascot-tag" id="mascotTag"></div>
   </div>
 
@@ -719,7 +675,6 @@ function loadQuote() {
   card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
   setTimeout(function() {
     $('quoteText').textContent = '\u201C' + curQuote.text + '\u201D';
-    $('quoteSource').textContent = curQuote.source || '';
     $('mascotTag').textContent = curQuote.tag;
     card.style.opacity = '1'; card.style.transform = 'translateY(0)';
   }, 250);
@@ -793,10 +748,17 @@ function particles(x, y) {
 }
 
 // ========== SKIP ANIMATION ==========
+var lastSkipText = '';
 function showSkip() {
   if (!DATA) return;
   var ov = $('skipOverlay'), box = $('skipAnimation');
   var a = rand(DATA.skipAnims);
+  var attempts = 0;
+  while (a.text === lastSkipText && DATA.skipAnims.length > 1 && attempts < 10) {
+    a = rand(DATA.skipAnims);
+    attempts++;
+  }
+  lastSkipText = a.text;
   var allQ = [].concat(DATA.quotes, DATA.cocoQuotes);
   var q = rand(allQ);
   var d = new Date().getDay();
@@ -877,7 +839,8 @@ async function saveShare() {
 
 // ========== MASCOT ANIMATION ==========
 function animMascot() {
-  const ms = ['🍳','🧢','🎤','🎵','💙','🌟','🐟','🤍','🖤'];
+  // 周深歌曲意象轮播：大鱼、鲸鱼、玫瑰、星星、月亮、风、花、光等
+  const ms = ['🐟','🐋','🌹','⭐','🌙','💨','🌸','🔆','❄️','🌊','🦋','🌈'];
   const el = $('headerMascot');
   setInterval(() => {
     el.style.opacity = '0';
@@ -919,8 +882,8 @@ function bindEvents() {
     // Vibrate
     vib(30);
 
-    // Show skip animation: first click always, then ~30% random chance
-    if (hitCount === 1 || Math.random() < 0.3) {
+    // Show skip animation: first click always, then ~15% random chance
+    if (hitCount === 1 || Math.random() < 0.15) {
       setTimeout(showSkip, 200);
     }
 
