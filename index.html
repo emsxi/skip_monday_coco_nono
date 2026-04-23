@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>跳过周一 ✨</title>
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0046A0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="跳过周一">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0046A0;
+      --primary-light: #4D8FCC;
+      --primary-lighter: #7AB3E0;
+      --primary-dark: #003070;
+      --accent: #00B4D8;
+      --accent-warm: #90E0EF;
+      --bg-dark: #040E1A;
+      --bg-card: rgba(0,70,160,0.08);
+      --text: #E8F0FE;
+      --text-light: #B0C8E8;
+      --text-warm: #FFFFFF;
+      --gradient-1: linear-gradient(135deg, #0046A0 0%, #0077B6 50%, #00B4D8 100%);
+      --gradient-2: linear-gradient(135deg, #003070 0%, #0046A0 100%);
+      --gradient-btn: linear-gradient(135deg, #0046A0 0%, #0077B6 40%, #00B4D8 100%);
+      --shadow-glow: 0 0 40px rgba(0,70,160,0.5);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      background: var(--bg-dark);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(0,70,160,0.2) 0%, transparent 60%);
+      color: var(--text-light);
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* ===== Starfield ===== */
+    .starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .star {
+      position: absolute; border-radius: 50%; background: #b0c8e8;
+      animation: twinkle var(--dur) ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; transform: scale(0.8); }
+      50% { opacity: 0.8; transform: scale(1.3); }
+    }
+
+    /* ===== App ===== */
+    .app {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 30px 20px 20px;
+      min-height: 100vh; min-height: 100dvh;
+    }
+
+    /* ===== Header ===== */
+    .header { text-align: center; margin-bottom: 12px; }
+    .header .mascot-row {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-bottom: 6px;
+    }
+    .header .mascot {
+      font-size: 44px; display: inline-block;
+      animation: float 3s ease-in-out infinite;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .header .mascot-img {
+      width: 42px; height: 42px; border-radius: 50%;
+      object-fit: cover; border: 2px solid rgba(0,70,160,0.2);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .header h1 {
+      font-size: 26px; font-weight: 900;
+      background: var(--gradient-1);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; letter-spacing: 3px;
+    }
+    .header .subtitle {
+      font-size: 12px; color: var(--primary-light); margin-top: 3px; opacity: 0.7;
+    }
+
+    /* ===== Character Gallery ===== */
+    .char-gallery {
+      display: flex; gap: 16px; margin-bottom: 14px;
+      justify-content: center;
+      padding: 4px 0; max-width: 360px; width: 100%;
+    }
+    .char-card {
+      text-align: center; cursor: pointer;
+      transition: transform 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .char-card:active { transform: scale(0.92); }
+    .char-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid rgba(0,70,160,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin: 0 auto 4px;
+      overflow: hidden;
+    }
+    .char-avatar img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .char-name {
+      font-size: 11px; color: var(--text-light);
+    }
+
+    /* ===== Date ===== */
+    .date-info {
+      background: var(--bg-card); backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,70,160,0.15); border-radius: 16px;
+      padding: 12px 24px; text-align: center;
+      margin-bottom: 14px; width: 100%; max-width: 360px;
+    }
+    .date-info .today { font-size: 13px; color: var(--text-light); opacity: 0.6; }
+    .date-info .day-name { font-size: 20px; font-weight: 700; color: var(--text-warm); margin-top: 2px; }
+    .date-info .countdown { font-size: 12px; color: var(--accent); margin-top: 4px; }
+
+    /* ===== Big Button ===== */
+    .skip-btn-wrap {
+      position: relative;
+      width: 180px; height: 180px;
+      margin: 8px auto 8px;
+    }
+    .skip-btn {
+      width: 180px; height: 180px; border-radius: 50%; border: none;
+      background: var(--gradient-btn);
+      color: white; font-family: 'Noto Sans SC', sans-serif;
+      cursor: pointer; position: relative; z-index: 5;
+      box-shadow: var(--shadow-glow), 0 8px 32px rgba(0,70,160,0.3),
+                  inset 0 -4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px; user-select: none; -webkit-user-select: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .skip-btn:active {
+      transform: scale(0.90) !important;
+      box-shadow: 0 0 60px rgba(0,70,160,0.8), 0 0 20px rgba(0,180,216,0.5);
+    }
+    .skip-btn.clicked {
+      animation: btnPop 0.3s ease;
+    }
+    @keyframes btnPop {
+      0% { transform: scale(1); }
+      30% { transform: scale(0.88); }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .skip-btn .btn-icon { font-size: 32px; }
+    .skip-btn .btn-text { font-size: 20px; font-weight: 900; letter-spacing: 3px; }
+    .skip-btn .btn-sub { font-size: 10px; font-weight: 300; opacity: 0.8; }
+
+    /* Pulse rings */
+    .pulse-ring {
+      position: absolute; top: 50%; left: 50%;
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 2px solid rgba(0,70,160,0.3);
+      transform: translate(-50%, -50%);
+      animation: pulse 2.5s ease-out infinite;
+      z-index: 1; pointer-events: none;
+    }
+    .pulse-ring:nth-child(2) { animation-delay: 0.8s; }
+    .pulse-ring:nth-child(3) { animation-delay: 1.6s; }
+    @keyframes pulse {
+      0% { width: 180px; height: 180px; opacity: 0.5; }
+      100% { width: 280px; height: 280px; opacity: 0; }
+    }
+
+    /* Hit counter */
+    .hit-counter {
+      font-size: 12px; color: var(--primary-light);
+      text-align: center; margin-bottom: 8px;
+      min-height: 20px; opacity: 0; transition: opacity 0.3s;
+    }
+    .hit-counter.show { opacity: 1; }
+
+    /* ===== Cards ===== */
+    .card {
+      background: var(--bg-card); backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,70,160,0.12); border-radius: 18px;
+      padding: 16px 20px; width: 100%; max-width: 360px;
+      margin-bottom: 12px; text-align: center;
+      transition: opacity 0.4s, transform 0.4s;
+      cursor: default;
+    }
+    .card-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 6px;
+      color: var(--primary-light);
+    }
+    .card-label.accent { color: var(--accent); }
+
+    .quote-text { font-size: 14px; line-height: 1.7; color: var(--text); }
+    .quote-source { font-size: 10px; color: var(--primary-light); margin-top: 8px; opacity: 0.6; }
+    .mascot-tag {
+      display: inline-block; background: rgba(0,70,160,0.15);
+      border: 1px solid rgba(0,70,160,0.2); border-radius: 20px;
+      padding: 2px 12px; font-size: 10px; color: var(--primary-light); margin-top: 6px;
+    }
+
+    .tip-text { font-size: 13px; line-height: 1.6; color: var(--text-light); }
+
+    /* Song card */
+    .card-song {
+      background: linear-gradient(135deg, rgba(0,70,160,0.1) 0%, rgba(0,48,112,0.12) 100%);
+      border-color: rgba(0,70,160,0.18);
+    }
+    .song-name { font-weight: 700; font-size: 16px; color: var(--text-warm); }
+    .song-mood { font-size: 12px; opacity: 0.65; margin-top: 4px; color: var(--text-light); }
+    .song-links {
+      display: flex; gap: 10px; justify-content: center; margin-top: 10px;
+    }
+    .song-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 6px 14px; border-radius: 20px; font-size: 12px;
+      text-decoration: none; transition: all 0.15s;
+      font-family: 'Noto Sans SC', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .song-link:active { transform: scale(0.94); }
+    .song-link.qq {
+      background: rgba(18,183,106,0.15); color: #12B76A;
+      border: 1px solid rgba(18,183,106,0.25);
+    }
+    .song-link.netease {
+      background: rgba(236,72,72,0.12); color: #EC4848;
+      border: 1px solid rgba(236,72,72,0.2);
+    }
+    .song-hint { font-size: 10px; color: var(--primary-light); opacity: 0.4; margin-top: 8px; }
+
+    .card-tip {
+      background: linear-gradient(135deg, rgba(0,180,216,0.06) 0%, rgba(0,70,160,0.08) 100%);
+      border-color: rgba(0,180,216,0.12);
+    }
+
+    /* ===== Bottom Actions ===== */
+    .bottom-actions {
+      display: flex; gap: 10px; width: 100%; max-width: 360px; margin-bottom: 8px;
+    }
+    .action-btn {
+      flex: 1; background: var(--bg-card); backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,70,160,0.12); border-radius: 14px;
+      padding: 12px; color: var(--text-light); font-family: 'Noto Sans SC', sans-serif;
+      font-size: 13px; cursor: pointer; display: flex; align-items: center;
+      justify-content: center; gap: 6px; transition: all 0.12s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .action-btn:active {
+      transform: scale(0.93);
+      background: rgba(0,70,160,0.18);
+      border-color: rgba(0,70,160,0.3);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center; padding: 14px 0; font-size: 10px;
+      color: rgba(0,70,160,0.25); width: 100%;
+    }
+
+    /* ===== Overlay (Skip + Share) ===== */
+    .overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(4,14,26,0.96); z-index: 50;
+      display: none; align-items: center; justify-content: center;
+      flex-direction: column; padding: 20px;
+    }
+    .overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .skip-animation { text-align: center; }
+    .skip-animation .big-emoji { font-size: 72px; margin-bottom: 12px; animation: float 2s ease-in-out infinite; }
+    .skip-animation .skip-text {
+      font-size: 26px; font-weight: 900;
+      background: var(--gradient-1);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 8px;
+    }
+    .skip-animation .skip-subtitle { font-size: 14px; color: var(--text-light); opacity: 0.6; }
+    .skip-animation .skip-quote {
+      font-size: 13px; color: var(--text); margin-top: 20px;
+      padding: 0 16px; line-height: 1.6; max-width: 300px;
+    }
+    .skip-animation .skip-quote-source { font-size: 10px; color: var(--primary-light); margin-top: 4px; opacity: 0.5; }
+
+    .close-overlay {
+      margin-top: 28px; background: rgba(0,70,160,0.12);
+      border: 1px solid rgba(0,70,160,0.25); border-radius: 25px;
+      padding: 10px 28px; color: var(--text-light); font-size: 13px;
+      font-family: 'Noto Sans SC', sans-serif; cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .close-overlay:active { background: rgba(0,70,160,0.25); transform: scale(0.95); }
+
+    /* Calendar destroy */
+    .cal-destroy { width: 100px; height: 120px; margin: 0 auto 14px; position: relative; }
+    .cal-page {
+      width: 100px; height: 120px; background: white; border-radius: 10px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    }
+    .cal-page .cal-h {
+      background: #e53935; width: 100%; height: 30px;
+      border-radius: 10px 10px 0 0; position: absolute; top: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 11px; font-weight: 700;
+    }
+    .cal-page .cal-d { font-size: 40px; font-weight: 900; color: #0046A0; margin-top: 10px; }
+    .cal-page .cal-w { font-size: 12px; color: #e53935; font-weight: 700; }
+
+    .a-crumble .cal-page { animation: crumble 1.5s ease-in forwards; }
+    .a-shatter .cal-page { animation: shatter 1.2s ease-in forwards; }
+    .a-rocket .cal-page { animation: rocketUp 1.5s ease-in forwards; }
+    .a-flush .cal-page { animation: flushSpin 1.5s ease-in forwards; }
+
+    @keyframes crumble {
+      0% { transform: scale(1) rotate(0); opacity: 1; }
+      30% { transform: scale(0.9) rotate(5deg); }
+      60% { transform: scale(0.7) rotate(-10deg) translateY(20px); opacity: 0.7; }
+      100% { transform: scale(0.1) rotate(720deg) translateY(100px); opacity: 0; }
+    }
+    @keyframes shatter {
+      0% { transform: scale(1); opacity: 1; filter: blur(0); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(2.5); opacity: 0; filter: blur(12px); }
+    }
+    @keyframes rocketUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-20px) scale(1.05); }
+      100% { transform: translateY(-350px) scale(0.3) rotate(10deg); opacity: 0; }
+    }
+    @keyframes flushSpin {
+      0% { transform: scale(1) rotate(0); opacity: 1; }
+      70% { transform: scale(0.5) rotate(720deg); opacity: 0.6; }
+      100% { transform: scale(0) rotate(1440deg); opacity: 0; }
+    }
+
+    /* Particles */
+    .particle {
+      position: fixed; pointer-events: none; z-index: 60; font-size: 20px;
+      animation: particleFly 1s ease-out forwards;
+    }
+    @keyframes particleFly {
+      0% { transform: translate(0,0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    }
+
+    /* Share modal */
+    .share-card {
+      width: 300px;
+      background: linear-gradient(150deg, #041E3A 0%, #0046A0 40%, #040E1A 100%);
+      border-radius: 24px; padding: 28px 20px; text-align: center;
+      border: 1px solid rgba(0,70,160,0.25);
+      box-shadow: 0 0 50px rgba(0,70,160,0.25);
+    }
+    .share-card .share-emoji { font-size: 48px; margin-bottom: 10px; }
+    .share-card .share-title {
+      font-size: 22px; font-weight: 900;
+      background: var(--gradient-1);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 6px;
+    }
+    .share-card .share-date { font-size: 12px; color: var(--text-light); opacity: 0.5; margin-bottom: 14px; }
+    .share-card .share-quote { font-size: 13px; color: var(--text); line-height: 1.6; margin-bottom: 14px; padding: 0 8px; }
+    .share-card .share-footer { font-size: 10px; color: var(--primary-light); opacity: 0.4; }
+
+    .share-actions { display: flex; gap: 10px; margin-top: 16px; width: 300px; }
+    .share-actions button {
+      flex: 1; padding: 11px; border-radius: 14px;
+      font-family: 'Noto Sans SC', sans-serif; font-size: 13px;
+      font-weight: 500; cursor: pointer; border: none;
+      touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+    }
+    .btn-save { background: var(--gradient-btn); color: white; }
+    .btn-save:active { transform: scale(0.95); }
+    .btn-close-share { background: rgba(0,70,160,0.1); color: var(--text-light); border: 1px solid rgba(0,70,160,0.18) !important; }
+    .btn-close-share:active { transform: scale(0.95); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 60px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(0,70,160,0.92); backdrop-filter: blur(10px);
+      color: white; padding: 8px 20px; border-radius: 20px;
+      font-size: 12px; z-index: 999; opacity: 0;
+      transition: all 0.3s; pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Loading */
+    .loading { text-align: center; padding: 20px; color: var(--primary-light); opacity: 0.5; font-size: 13px; }
+
+    /* Responsive */
+    @media (max-height: 700px) {
+      .header .mascot { font-size: 36px; }
+      .header h1 { font-size: 22px; }
+      .skip-btn-wrap, .skip-btn { width: 150px; height: 150px; }
+      .pulse-ring { width: 150px; height: 150px; }
+      @keyframes pulse {
+        0% { width: 150px; height: 150px; opacity: 0.5; }
+        100% { width: 240px; height: 240px; opacity: 0; }
+      }
+      .card { padding: 12px 16px; margin-bottom: 8px; }
+      .char-avatar { width: 46px; height: 46px; font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+<script>
+// Force clear ALL caches
+localStorage.removeItem('skipMonday_customData');
+localStorage.removeItem('skipMonday_dataVersion');
+localStorage.removeItem('skipMonday_cleaned_v2');
+// Unregister service worker to prevent stale cache
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs) {
+    regs.forEach(function(r) { r.unregister(); });
+  });
+}
+// Clear caches API
+if ('caches' in window) {
+  caches.keys().then(function(names) {
+    names.forEach(function(n) { caches.delete(n); });
+  });
+}
+</script>
+
+<div class="starfield" id="starfield"></div>
+
+<div class="app">
+  <!-- Header -->
+  <div class="header">
+    <div class="mascot-row">
+      <img class="mascot-img" src="images/coco.svg" alt="可可" style="animation-delay:0s">
+      <span class="mascot" id="headerMascot">🐟</span>
+      <img class="mascot-img" src="images/nono.svg" alt="嫑嫑" style="animation-delay:1s">
+    </div>
+    <h1>跳过周一</h1>
+    <div class="subtitle">风雨同周，深情不移 💙 可可嫑嫑陪你每一天</div>
+  </div>
+
+  <!-- Character Gallery -->
+  <div class="char-gallery" id="charGallery">
+    <div class="char-card" onclick="toast('🤍 可可安安静静地陪着你')">
+      <div class="char-avatar">
+        <img src="images/coco.svg" alt="周可可">
+      </div>
+      <div class="char-name">周可可</div>
+    </div>
+    <div class="char-card" onclick="toast('🖤 走走走，去看看那边！')">
+      <div class="char-avatar">
+        <img src="images/nono.svg" alt="周嫑嫑">
+      </div>
+      <div class="char-name">周嫑嫑</div>
+    </div>
+  </div>
+
+  <!-- Date -->
+  <div class="date-info">
+    <div class="today" id="dateStr"></div>
+    <div class="day-name" id="dayName"></div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <!-- Hit Counter -->
+  <div class="hit-counter" id="hitCounter"></div>
+
+  <!-- Big Button -->
+  <div class="skip-btn-wrap">
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <button class="skip-btn" id="skipBtn" type="button">
+      <span class="btn-icon">⏭️</span>
+      <span class="btn-text">跳过周一</span>
+      <span class="btn-sub">tap to skip ✨</span>
+    </button>
+  </div>
+
+  <!-- Quote -->
+  <div class="card" id="quoteCard">
+    <div class="card-label">🎵 周深说</div>
+    <div class="quote-text" id="quoteText"><span class="loading">加载中...</span></div>
+    <div class="quote-source" id="quoteSource"></div>
+    <div class="mascot-tag" id="mascotTag"></div>
+  </div>
+
+  <!-- Tip -->
+  <div class="card card-tip" id="tipCard">
+    <div class="card-label accent">✨ 今日整活建议</div>
+    <div class="tip-text" id="tipText"><span class="loading">加载中...</span></div>
+  </div>
+
+  <!-- Song -->
+  <div class="card card-song" id="songCard">
+    <div class="card-label">🎧 今日深深歌单</div>
+    <div id="songText"><span class="loading">加载中...</span></div>
+    <div class="song-links" id="songLinks"></div>
+    <div class="song-hint">戴上耳机，让周一变得好听</div>
+  </div>
+
+  <!-- Actions -->
+  <div class="bottom-actions">
+    <button class="action-btn" id="refreshBtn" type="button">🎲 换一条</button>
+    <button class="action-btn" id="shareBtn" type="button">📸 生成卡片</button>
+    <button class="action-btn" id="adminBtn" type="button" onclick="location.href='admin.html'">🔧 管理</button>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Made with 💙 by 生米 · 可可和嫑嫑陪你每一天
+  </div>
+</div>
+
+<!-- Skip Overlay -->
+<div class="overlay" id="skipOverlay">
+  <div class="skip-animation" id="skipAnimation"></div>
+  <button class="close-overlay" id="closeOverlay" type="button">回到现实 😌</button>
+</div>
+
+<!-- Share Modal -->
+<div class="overlay" id="shareModal">
+  <div class="share-card" id="shareCardContent">
+    <div class="share-emoji" id="shareEmoji">✨</div>
+    <div class="share-title">周一已跳过！</div>
+    <div class="share-date" id="shareDate"></div>
+    <div class="share-quote" id="shareQuote"></div>
+    <div class="share-footer">跳过周一 · 风雨同周，深情不移 💙</div>
+  </div>
+  <div class="share-actions">
+    <button class="btn-save" id="btnSaveShare" type="button">📸 保存图片</button>
+    <button class="btn-close-share" id="btnCloseShare" type="button">关闭</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+// ========== STATE ==========
+let DATA = null;  // will be loaded from data.json
+let hitCount = 0;
+let totalSkips = parseInt(localStorage.getItem('totalSkips') || '0');
+let curQuote = null;
+let curSong = null;
+
+// ========== UTILS ==========
+const $ = id => document.getElementById(id);
+const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+
+function toast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function vib(p) { try { navigator.vibrate && navigator.vibrate(p); } catch(e) {} }
+
+// ========== LOAD DATA ==========
+const STORAGE_KEY = 'skipMonday_customData';
+const STORAGE_VER_KEY = 'skipMonday_dataVersion';
+const CURRENT_DATA_VERSION = 99; // bump this when data.json changes significantly
+
+async function loadData() {
+  // Check if we need to force-refresh (data version changed)
+  var savedVer = parseInt(localStorage.getItem(STORAGE_VER_KEY) || '0');
+  if (savedVer < CURRENT_DATA_VERSION) {
+    // Clear old data to force reload from data.json
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.setItem(STORAGE_VER_KEY, CURRENT_DATA_VERSION + '');
+  }
+
+  // Fetch default data.json
+  var defaultData = null;
+  try {
+    var resp = await fetch('./data.json?v=' + Date.now());
+    defaultData = await resp.json();
+  } catch(e) {
+    console.warn('[Skip Monday] Failed to fetch data.json:', e);
+  }
+
+  // Try localStorage
+  var saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      DATA = JSON.parse(saved);
+      // Always merge dayConfig from default (it's not user-editable)
+      if (defaultData && defaultData.dayConfig) {
+        DATA.dayConfig = defaultData.dayConfig;
+      }
+      initApp();
+      return;
+    } catch(e) {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }
+
+  // No valid localStorage: use default data
+  if (defaultData) {
+    DATA = defaultData;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA));
+  } else {
+    // Ultimate fallback with real content
+    DATA = {
+      quotes: [
+        { text: "都会熬过去的，正面面对，做好自己，熬一熬。", source: "周深", tag: "🎤 深深说" },
+        { text: "不用当最好的，要当最开心的！", source: "周深", tag: "🎤 深深说" },
+        { text: "黑暗的时候记得开灯就不黑啦。", source: "周深", tag: "💙 暖心叮嘱" }
+      ],
+      cocoQuotes: [
+        { text: "可可安安静静地待在你身边，不说话也没关系 🤍", tag: "🤍 可可陪伴" },
+        { text: "嫑嫑用平底锅帮你把烦恼全拍扁了！啪！💥", tag: "🖤 嫑嫑出击" },
+        { text: "虽然今天没有演唱会，但可可一直在你身边呀 🤍", tag: "🤍 可可陪伴" }
+      ],
+      tips: [
+        "戴上耳机，把《大鱼》循环三遍开启新一天 🐟🎧",
+        "给自己泡杯茶，假装在可可的烘焙工坊里发呆 ☕🤍",
+        "今天对镜子说一句 卡布所在音之天籁 给自己打气 🎤💙"
+      ],
+      songs: [
+        { name: "大鱼", mood: "空灵治愈，适合安静开启新一天 🌊", qqMusic: "https://y.qq.com/n/ryqq/songDetail/004OnMfl0pMQa5", neteaseId: "441491828" },
+        { name: "起风了", mood: "元气满满，给你满血复活的力量 💪", qqMusic: "https://y.qq.com/n/ryqq/songDetail/003DFRzr1MxlPl", neteaseId: "1330348068" },
+        { name: "达拉崩吧", mood: "超级欢乐，一秒赶走所有blues 🎉", qqMusic: "https://y.qq.com/n/ryqq/songDetail/001Qu8bY1gmpGb", neteaseId: "1407551413" }
+      ],
+      skipAnims: [
+        { emoji: "🗑️", text: "烦恼已被扔进垃圾桶！", cls: "a-crumble" },
+        { emoji: "💥", text: "坏心情已被嫑嫑用平底锅拍碎！", cls: "a-shatter" },
+        { emoji: "🎵", text: "烦恼已被周深的歌声融化！", cls: "a-rocket" }
+      ],
+      dayConfig: {
+        "1": { "title": "跳过周一", "sub": "坚持住！💪", "btnText": "跳过周一", "cdTemplate": "距离周一结束还有 {hours} 小时 ⏰" },
+        "4": { "title": "周四冲刺", "sub": "明天就是周五了！🏃", "btnText": "赶走烦恼", "cdTemplate": "明天就是周五了！最后冲刺 🏃💨" }
+      }
+    };
+  }
+  initApp();
+}
+
+// ========== STARFIELD ==========
+function initStars() {
+  const c = $('starfield');
+  for (let i = 0; i < 45; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const sz = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${Math.random()*3+2}s;animation-delay:${Math.random()*3}s`;
+    c.appendChild(s);
+  }
+}
+
+// ========== DATE ==========
+function updateDate() {
+  const now = new Date();
+  const days = ['周日','周一','周二','周三','周四','周五','周六'];
+  const d = now.getDay();
+  $('dateStr').textContent = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
+  $('dayName').textContent = days[d];
+
+  const btn = $('skipBtn');
+  const txt = btn.querySelector('.btn-text');
+  const sub = btn.querySelector('.btn-sub');
+  const cd = $('countdown');
+
+  // Use dayConfig from data if available
+  const cfg = DATA && DATA.dayConfig && DATA.dayConfig[d + ''];
+  if (cfg) {
+    txt.textContent = cfg.btnText;
+    sub.textContent = cfg.sub;
+    let cdText = cfg.cdTemplate;
+    if (cdText.includes('{hours}')) {
+      cdText = cdText.replace('{hours}', 24 - now.getHours());
+    }
+    cd.textContent = cdText;
+    cd.style.color = d === 1 ? '#00B4D8' : d === 5 || d === 6 ? '#00B4D8' : '#7AB3E0';
+  } else {
+    // Fallback
+    txt.textContent = '赶走烦恼';
+    sub.textContent = '加油 💪';
+    cd.textContent = `距离周五还有 ${5 - d} 天 💪`;
+    cd.style.color = '#7AB3E0';
+  }
+}
+
+// ========== CONTENT ==========
+function loadQuote() {
+  if (!DATA) return;
+  var pool = Math.random() < 0.55 ? DATA.quotes : DATA.cocoQuotes;
+  if (!pool || pool.length === 0) pool = DATA.quotes || [];
+  if (pool.length === 0) return;
+
+  var oldText = curQuote ? curQuote.text : '';
+  var newQuote = pool[Math.floor(Math.random() * pool.length)];
+  var attempts = 0;
+  while (newQuote.text === oldText && pool.length > 1 && attempts < 10) {
+    newQuote = pool[Math.floor(Math.random() * pool.length)];
+    attempts++;
+  }
+  curQuote = newQuote;
+  var card = $('quoteCard');
+  card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
+  setTimeout(function() {
+    $('quoteText').textContent = '\u201C' + curQuote.text + '\u201D';
+    $('quoteSource').textContent = curQuote.source || '';
+    $('mascotTag').textContent = curQuote.tag;
+    card.style.opacity = '1'; card.style.transform = 'translateY(0)';
+  }, 250);
+}
+
+function loadTip() {
+  if (!DATA) { console.warn('loadTip: no DATA'); return; }
+  if (!DATA.tips || DATA.tips.length === 0) { console.warn('loadTip: no tips'); return; }
+  const card = $('tipCard');
+  const tipEl = $('tipText');
+  const oldText = tipEl ? tipEl.textContent : '';
+  let newTip = DATA.tips[Math.floor(Math.random() * DATA.tips.length)];
+  let attempts = 0;
+  while (newTip === oldText && DATA.tips.length > 1 && attempts < 10) {
+    newTip = DATA.tips[Math.floor(Math.random() * DATA.tips.length)];
+    attempts++;
+  }
+  card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
+  setTimeout(function() {
+    tipEl.textContent = newTip;
+    card.style.opacity = '1'; card.style.transform = 'translateY(0)';
+  }, 250);
+}
+
+function loadSong() {
+  if (!DATA) { console.warn('loadSong: no DATA'); return; }
+  if (!DATA.songs || DATA.songs.length === 0) { console.warn('loadSong: no songs'); return; }
+  const card = $('songCard');
+  const oldName = curSong ? curSong.name : '';
+  let newSong = DATA.songs[Math.floor(Math.random() * DATA.songs.length)];
+  let attempts = 0;
+  while (newSong.name === oldName && DATA.songs.length > 1 && attempts < 10) {
+    newSong = DATA.songs[Math.floor(Math.random() * DATA.songs.length)];
+    attempts++;
+  }
+  curSong = newSong;
+
+  card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
+  setTimeout(function() {
+    var songText = $('songText');
+    songText.innerHTML = '<div class="song-name">\u300A' + curSong.name + '\u300B</div><div class="song-mood">' + curSong.mood + '</div>';
+
+    var links = $('songLinks');
+    var linksHtml = '';
+    if (curSong.qqMusic) {
+      linksHtml += '<a class="song-link qq" href="' + curSong.qqMusic + '" target="_blank" rel="noopener">\uD83C\uDFB5 QQ\u97F3\u4E50</a>';
+    }
+    if (curSong.neteaseId) {
+      linksHtml += '<a class="song-link netease" href="https://music.163.com/song?id=' + curSong.neteaseId + '" target="_blank" rel="noopener">\uD83C\uDFB5 \u7F51\u6613\u4E91</a>';
+    }
+    links.innerHTML = linksHtml;
+    card.style.opacity = '1'; card.style.transform = 'translateY(0)';
+  }, 250);
+}
+
+// ========== PARTICLES ==========
+function particles(x, y) {
+  const em = ['⭐','✨','🎵','💙','🍳','🧢','💫','🌟','🐟','🎤','🤍','🖤'];
+  for (let i = 0; i < 8; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = rand(em);
+    const a = (Math.PI * 2 / 8) * i, dist = 60 + Math.random() * 40;
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    p.style.setProperty('--tx', Math.cos(a) * dist + 'px');
+    p.style.setProperty('--ty', Math.sin(a) * dist + 'px');
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 1000);
+  }
+}
+
+// ========== SKIP ANIMATION ==========
+function showSkip() {
+  if (!DATA) return;
+  const ov = $('skipOverlay'), box = $('skipAnimation');
+  const a = rand(DATA.skipAnims);
+  const allQ = [...DATA.quotes, ...DATA.cocoQuotes];
+  const q = rand(allQ);
+  box.innerHTML = `
+    <div class="cal-destroy ${a.cls}">
+      <div class="cal-page">
+        <div class="cal-h">MONDAY</div>
+        <div class="cal-d">一</div>
+        <div class="cal-w">周一</div>
+      </div>
+    </div>
+    <div class="big-emoji">${a.emoji}</div>
+    <div class="skip-text">${a.text}</div>
+    <div class="skip-subtitle">（${new Date().getDay() === 1 ? '但明天还是要上班的哦 😘' : '烦恼拜拜，好心情来来 😘'}）</div>
+    <div class="skip-quote">"${q.text}"</div>
+    <div class="skip-quote-source">—— ${q.source || q.tag}</div>`;
+  ov.classList.add('active');
+  vib([50, 30, 50, 30, 100]);
+  setTimeout(() => {
+    for (let i = 0; i < 3; i++)
+      setTimeout(() => particles(
+        innerWidth / 2 + (Math.random() - 0.5) * 120,
+        innerHeight / 3 + (Math.random() - 0.5) * 60
+      ), i * 200);
+  }, 500);
+}
+
+// ========== SHARE ==========
+function showShare() {
+  const now = new Date();
+  const allQ = DATA ? [...DATA.quotes, ...DATA.cocoQuotes] : [];
+  const q = curQuote || (allQ.length ? rand(allQ) : { text: "周一加油！" });
+  $('shareEmoji').textContent = rand(['✨','🎵','💙','🍳','🐱','🌟']);
+  $('shareDate').textContent = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
+  $('shareQuote').textContent = `"${q.text}"`;
+  $('shareModal').classList.add('active');
+}
+
+async function saveShare() {
+  try {
+    toast('正在生成卡片...');
+    const c = await html2canvas($('shareCardContent'), { backgroundColor: '#040E1A', scale: 2, useCORS: true });
+    const l = document.createElement('a');
+    l.download = `跳过周一_${new Date().toLocaleDateString('zh-CN')}.png`;
+    l.href = c.toDataURL('image/png');
+    l.click();
+    toast('卡片已保存 ✨');
+  } catch(e) {
+    toast('长按截图保存吧 📸');
+  }
+}
+
+// ========== MASCOT ANIMATION ==========
+function animMascot() {
+  const ms = ['🍳','🧢','🎤','🎵','💙','🌟','🐟','🤍','🖤'];
+  const el = $('headerMascot');
+  setInterval(() => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(-6px) scale(0.8)';
+    setTimeout(() => {
+      el.textContent = rand(ms);
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0) scale(1)';
+    }, 250);
+  }, 3500);
+}
+
+// ========== EVENTS ==========
+function bindEvents() {
+  // Skip button - main interaction
+  const skipBtn = $('skipBtn');
+  skipBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    hitCount++;
+    totalSkips++;
+    localStorage.setItem('totalSkips', totalSkips + '');
+
+    // Visual feedback
+    this.classList.remove('clicked');
+    void this.offsetWidth; // trigger reflow
+    this.classList.add('clicked');
+
+    // Counter
+    const c = $('hitCounter');
+    c.textContent = `已连击 ${hitCount} 次 💥  累计跳过 ${totalSkips} 次`;
+    c.classList.add('show');
+
+    // Particles
+    const r = this.getBoundingClientRect();
+    particles(r.left + r.width / 2, r.top + r.height / 2);
+
+    // Vibrate
+    vib(30);
+
+    // Show skip animation on first click and every 5 clicks
+    if (hitCount === 1 || hitCount % 5 === 0) {
+      setTimeout(showSkip, 200);
+    }
+
+    // Toast on other clicks
+    if (hitCount > 1 && hitCount % 5 !== 0) {
+      const msgs = ['继续！💪','再来！✨','冲！🚀','加油！💙','嘿！🎵','干得漂亮！🍳'];
+      toast(rand(msgs));
+    }
+  });
+
+  // Close overlay
+  $('closeOverlay').addEventListener('click', function(e) {
+    e.preventDefault();
+    $('skipOverlay').classList.remove('active');
+  });
+  $('skipOverlay').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+
+  // Refresh content
+  $('refreshBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    loadQuote();
+    loadTip();
+    loadSong();
+    vib(15);
+    toast('已刷新 ✨');
+  });
+
+  // Share
+  $('shareBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    showShare();
+  });
+  $('btnSaveShare').addEventListener('click', function(e) {
+    e.preventDefault();
+    saveShare();
+  });
+  $('btnCloseShare').addEventListener('click', function(e) {
+    e.preventDefault();
+    $('shareModal').classList.remove('active');
+  });
+  $('shareModal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+}
+
+// ========== INIT ==========
+function initApp() {
+  updateDate();
+  loadQuote();
+  loadTip();
+  loadSong();
+}
+
+(function boot() {
+  initStars();
+  updateDate();
+  animMascot();
+  bindEvents();
+  setInterval(updateDate, 60000);
+  loadData(); // async load data.json → then initApp
+
+  // Register Service Worker for PWA
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>

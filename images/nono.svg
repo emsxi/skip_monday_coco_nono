@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- 周嫑嫑：平底锅本体，煎蛋眼，香肠嘴，古灵精怪 -->
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF8E1"/>
+      <stop offset="100%" stop-color="#FFE0B2"/>
+    </linearGradient>
+    <radialGradient id="egg" cx="0.4" cy="0.35" r="0.6">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FFA000"/>
+    </radialGradient>
+  </defs>
+  <!-- 背景圆 -->
+  <circle cx="100" cy="100" r="96" fill="url(#bg2)" stroke="#333" stroke-width="2" opacity="0.3"/>
+  <!-- 平底锅手柄 -->
+  <rect x="148" y="72" width="40" height="14" rx="7" fill="#5D4037"/>
+  <rect x="150" y="74" width="36" height="10" rx="5" fill="#795548"/>
+  <!-- 平底锅身体（主体） -->
+  <circle cx="100" cy="100" r="55" fill="#424242"/>
+  <circle cx="100" cy="100" r="50" fill="#616161"/>
+  <circle cx="100" cy="100" r="46" fill="#757575"/>
+  <!-- 锅内 -->
+  <circle cx="100" cy="100" r="42" fill="#9E9E9E"/>
+  <!-- 煎蛋眼 - 左眼 -->
+  <ellipse cx="80" cy="85" rx="16" ry="15" fill="white"/>
+  <circle cx="80" cy="85" r="8" fill="url(#egg)"/>
+  <circle cx="82" cy="83" r="3" fill="#333"/>
+  <circle cx="84" cy="81" r="1.2" fill="white"/>
+  <!-- 煎蛋眼 - 右眼 -->
+  <ellipse cx="120" cy="85" rx="16" ry="15" fill="white"/>
+  <circle cx="120" cy="85" r="8" fill="url(#egg)"/>
+  <circle cx="122" cy="83" r="3" fill="#333"/>
+  <circle cx="124" cy="81" r="1.2" fill="white"/>
+  <!-- 香肠嘴 -->
+  <ellipse cx="100" cy="115" rx="14" ry="6" fill="#D84315"/>
+  <ellipse cx="100" cy="114" rx="12" ry="4" fill="#E65100"/>
+  <!-- 嘴巴上的光泽 -->
+  <ellipse cx="96" cy="112" rx="4" ry="2" fill="#FF8A65" opacity="0.6"/>
+  <!-- 嫑嫑的小手臂 -->
+  <ellipse cx="48" cy="110" rx="8" ry="12" fill="#616161" transform="rotate(-15 48 110)"/>
+  <ellipse cx="152" cy="110" rx="8" ry="12" fill="#616161" transform="rotate(15 152 110)"/>
+  <!-- NoNo 文字 -->
+  <text x="100" y="188" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#424242">NoNo</text>
+</svg>

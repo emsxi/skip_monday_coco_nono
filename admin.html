@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>跳过周一 · 管理</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0046A0;
+      --primary-light: #4D8FCC;
+      --bg: #040E1A;
+      --bg-card: rgba(0,70,160,0.08);
+      --text: #E8F0FE;
+      --text-light: #B0C8E8;
+      --danger: #E53935;
+      --success: #12B76A;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; padding: 20px;
+      padding-top: env(safe-area-inset-top, 20px);
+    }
+
+    /* Header */
+    .admin-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .admin-header h1 {
+      font-size: 20px; font-weight: 700;
+      background: linear-gradient(135deg, #0046A0, #00B4D8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .back-btn {
+      padding: 6px 14px; border-radius: 20px; font-size: 12px;
+      background: var(--bg-card); border: 1px solid rgba(0,70,160,0.2);
+      color: var(--text-light); cursor: pointer; text-decoration: none;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex; gap: 0; margin-bottom: 16px;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(0,70,160,0.15);
+    }
+    .tab {
+      flex: 1; padding: 10px 0; text-align: center; font-size: 13px;
+      background: var(--bg-card); color: var(--text-light);
+      cursor: pointer; border: none; font-family: inherit;
+      transition: all 0.15s;
+    }
+    .tab.active { background: var(--primary); color: white; font-weight: 700; }
+
+    /* Section */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* Stats bar */
+    .stats {
+      display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .stat {
+      padding: 6px 12px; border-radius: 20px; font-size: 11px;
+      background: var(--bg-card); border: 1px solid rgba(0,70,160,0.12);
+      color: var(--primary-light);
+    }
+    .stat b { color: var(--text); }
+
+    /* Add form */
+    .add-form {
+      background: var(--bg-card); border: 1px solid rgba(0,70,160,0.15);
+      border-radius: 14px; padding: 14px; margin-bottom: 14px;
+    }
+    .add-form h3 { font-size: 13px; margin-bottom: 10px; color: var(--primary-light); }
+    .form-row { margin-bottom: 8px; }
+    .form-row label { display: block; font-size: 11px; color: var(--text-light); margin-bottom: 3px; }
+    .form-row input, .form-row textarea, .form-row select {
+      width: 100%; padding: 8px 12px; border-radius: 10px;
+      background: rgba(0,70,160,0.06); border: 1px solid rgba(0,70,160,0.15);
+      color: var(--text); font-family: inherit; font-size: 13px;
+      outline: none;
+    }
+    .form-row textarea { height: 60px; resize: vertical; }
+    .form-row input:focus, .form-row textarea:focus {
+      border-color: var(--primary);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 8px 16px; border-radius: 10px; font-size: 13px;
+      font-family: inherit; cursor: pointer; border: none;
+      transition: all 0.12s; font-weight: 500;
+    }
+    .btn:active { transform: scale(0.95); }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-danger { background: rgba(229,57,53,0.12); color: var(--danger); border: 1px solid rgba(229,57,53,0.2); }
+    .btn-success { background: rgba(18,183,106,0.12); color: var(--success); border: 1px solid rgba(18,183,106,0.2); }
+    .btn-ghost { background: var(--bg-card); color: var(--text-light); border: 1px solid rgba(0,70,160,0.12); }
+
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* List items */
+    .list-item {
+      background: var(--bg-card); border: 1px solid rgba(0,70,160,0.1);
+      border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+      position: relative;
+    }
+    .list-item .item-text { font-size: 13px; line-height: 1.5; color: var(--text); margin-bottom: 4px; }
+    .list-item .item-meta { font-size: 10px; color: var(--primary-light); opacity: 0.6; }
+    .list-item .item-tag {
+      display: inline-block; padding: 1px 8px; border-radius: 10px;
+      font-size: 10px; background: rgba(0,70,160,0.1); color: var(--primary-light);
+      margin-top: 4px;
+    }
+    .list-item .delete-btn {
+      position: absolute; top: 10px; right: 10px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(229,57,53,0.08); border: 1px solid rgba(229,57,53,0.15);
+      color: var(--danger); font-size: 14px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .list-item .delete-btn:active { background: rgba(229,57,53,0.2); }
+
+    /* Data management */
+    .data-section {
+      background: var(--bg-card); border: 1px solid rgba(0,70,160,0.15);
+      border-radius: 14px; padding: 16px; margin-bottom: 14px;
+    }
+    .data-section h3 { font-size: 14px; margin-bottom: 10px; color: var(--primary-light); }
+    .data-section p { font-size: 12px; color: var(--text-light); margin-bottom: 10px; line-height: 1.5; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: rgba(0,70,160,0.92); color: white; padding: 8px 20px;
+      border-radius: 20px; font-size: 12px; z-index: 999; opacity: 0;
+      transition: all 0.3s; pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* empty state */
+    .empty { text-align: center; padding: 30px; color: var(--text-light); opacity: 0.4; font-size: 13px; }
+
+    /* Search */
+    .search-bar {
+      margin-bottom: 12px;
+    }
+    .search-bar input {
+      width: 100%; padding: 8px 14px; border-radius: 20px;
+      background: var(--bg-card); border: 1px solid rgba(0,70,160,0.15);
+      color: var(--text); font-size: 13px; outline: none;
+    }
+    .search-bar input::placeholder { color: rgba(176,200,232,0.4); }
+  </style>
+</head>
+<body>
+
+<div class="admin-header">
+  <h1>🔧 内容管理</h1>
+  <a href="index.html" class="back-btn">← 返回首页</a>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" data-tab="quotes">语录</button>
+  <button class="tab" data-tab="tips">建议</button>
+  <button class="tab" data-tab="songs">歌单</button>
+  <button class="tab" data-tab="data">数据</button>
+</div>
+
+<!-- ===== QUOTES ===== -->
+<div class="section active" id="sec-quotes">
+  <div class="stats" id="quoteStats"></div>
+  <div class="search-bar"><input type="text" id="quoteSearch" placeholder="🔍 搜索语录..."></div>
+
+  <div class="add-form">
+    <h3>➕ 添加新语录</h3>
+    <div class="form-row">
+      <label>内容</label>
+      <textarea id="newQuoteText" placeholder="输入语录内容..."></textarea>
+    </div>
+    <div class="form-row">
+      <label>来源（可选）</label>
+      <input type="text" id="newQuoteSource" placeholder="如：周深、周深 · 对生米">
+    </div>
+    <div class="form-row">
+      <label>类型</label>
+      <select id="newQuoteType">
+        <option value="quote">🎤 周深语录</option>
+        <option value="coco">🤍🖤 可可/嫑嫑语录</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>标签</label>
+      <input type="text" id="newQuoteTag" placeholder="如：🎤 深深说、🐱 nono碎碎念">
+    </div>
+    <button class="btn btn-primary" onclick="addQuote()">添加</button>
+  </div>
+
+  <div id="quoteList"></div>
+</div>
+
+<!-- ===== TIPS ===== -->
+<div class="section" id="sec-tips">
+  <div class="stats" id="tipStats"></div>
+  <div class="search-bar"><input type="text" id="tipSearch" placeholder="🔍 搜索建议..."></div>
+
+  <div class="add-form">
+    <h3>➕ 添加新建议</h3>
+    <div class="form-row">
+      <textarea id="newTipText" placeholder="输入整活建议..."></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="addTip()">添加</button>
+  </div>
+
+  <div id="tipList"></div>
+</div>
+
+<!-- ===== SONGS ===== -->
+<div class="section" id="sec-songs">
+  <div class="stats" id="songStats"></div>
+
+  <div class="add-form">
+    <h3>➕ 添加新歌曲</h3>
+    <div class="form-row">
+      <label>歌名</label>
+      <input type="text" id="newSongName" placeholder="歌曲名称">
+    </div>
+    <div class="form-row">
+      <label>心情描述</label>
+      <input type="text" id="newSongMood" placeholder="如：空灵治愈，适合安静开启新一天 🌊">
+    </div>
+    <div class="form-row">
+      <label>QQ音乐链接（可选）</label>
+      <input type="text" id="newSongQQ" placeholder="https://y.qq.com/...">
+    </div>
+    <div class="form-row">
+      <label>网易云歌曲ID（可选）</label>
+      <input type="text" id="newSongNetease" placeholder="如：441491828">
+    </div>
+    <button class="btn btn-primary" onclick="addSong()">添加</button>
+  </div>
+
+  <div id="songList"></div>
+</div>
+
+<!-- ===== DATA ===== -->
+<div class="section" id="sec-data">
+  <div class="data-section">
+    <h3>📊 数据统计</h3>
+    <div class="stats" id="globalStats"></div>
+  </div>
+
+  <div class="data-section">
+    <h3>📤 导出数据</h3>
+    <p>把你的所有自定义数据导出为文件，换手机时可以导入恢复。</p>
+    <button class="btn btn-success" onclick="exportData()">📤 导出数据文件</button>
+  </div>
+
+  <div class="data-section">
+    <h3>📥 导入数据</h3>
+    <p>从之前导出的文件恢复数据。导入会<b>合并</b>到现有数据中，不会覆盖。</p>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    <button class="btn btn-primary" onclick="document.getElementById('importFile').click()">📥 选择文件导入</button>
+  </div>
+
+  <div class="data-section">
+    <h3>🔄 重置数据</h3>
+    <p>清除所有自定义修改，恢复到初始内置数据。<b>此操作不可撤销！</b></p>
+    <button class="btn btn-danger" onclick="resetData()">⚠️ 重置为默认数据</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== Storage keys =====
+const STORAGE_KEY = 'skipMonday_customData';
+
+// ===== State =====
+let defaultData = null;
+let customData = null;
+
+// ===== Utils =====
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ===== Load =====
+async function loadAll() {
+  // Load default data
+  try {
+    const r = await fetch('./data.json?v=' + Date.now());
+    defaultData = await r.json();
+  } catch(e) {
+    defaultData = { quotes: [], cocoQuotes: [], tips: [], songs: [], skipAnims: [] };
+  }
+
+  // Load custom overrides from localStorage
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try { customData = JSON.parse(saved); } catch(e) { customData = null; }
+  }
+
+  if (!customData) {
+    // First time: copy default as custom
+    customData = JSON.parse(JSON.stringify(defaultData));
+    saveCustom();
+  }
+
+  renderAll();
+}
+
+function saveCustom() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(customData));
+}
+
+function getData() { return customData || defaultData; }
+
+// ===== Tabs =====
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('sec-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ===== Render =====
+function renderAll() {
+  renderQuotes();
+  renderTips();
+  renderSongs();
+  renderGlobalStats();
+}
+
+function renderQuotes(filter) {
+  const d = getData();
+  const all = [
+    ...d.quotes.map((q,i) => ({...q, type:'quote', idx:i})),
+    ...d.cocoQuotes.map((q,i) => ({...q, type:'coco', idx:i}))
+  ];
+  const filtered = filter
+    ? all.filter(q => q.text.includes(filter) || (q.source||'').includes(filter) || q.tag.includes(filter))
+    : all;
+
+  document.getElementById('quoteStats').innerHTML =
+    `<span class="stat">周深语录 <b>${d.quotes.length}</b></span>` +
+    `<span class="stat">可可/嫑嫑 <b>${d.cocoQuotes.length}</b></span>` +
+    `<span class="stat">总计 <b>${all.length}</b></span>`;
+
+  const list = document.getElementById('quoteList');
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="empty">暂无数据</div>';
+    return;
+  }
+  list.innerHTML = filtered.map(q => `
+    <div class="list-item">
+      <div class="delete-btn" onclick="deleteQuote('${q.type}',${q.idx})">×</div>
+      <div class="item-text">"${q.text}"</div>
+      <div class="item-meta">${q.source || ''}</div>
+      <span class="item-tag">${q.tag}</span>
+    </div>
+  `).join('');
+}
+
+function renderTips(filter) {
+  const d = getData();
+  const filtered = filter ? d.tips.filter(t => t.includes(filter)) : d.tips;
+
+  document.getElementById('tipStats').innerHTML =
+    `<span class="stat">整活建议 <b>${d.tips.length}</b> 条</span>`;
+
+  const list = document.getElementById('tipList');
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="empty">暂无数据</div>';
+    return;
+  }
+  list.innerHTML = filtered.map((t,i) => `
+    <div class="list-item">
+      <div class="delete-btn" onclick="deleteTip(${d.tips.indexOf(t)})">×</div>
+      <div class="item-text">${t}</div>
+    </div>
+  `).join('');
+}
+
+function renderSongs() {
+  const d = getData();
+  document.getElementById('songStats').innerHTML =
+    `<span class="stat">歌曲 <b>${d.songs.length}</b> 首</span>`;
+
+  const list = document.getElementById('songList');
+  if (d.songs.length === 0) {
+    list.innerHTML = '<div class="empty">暂无数据</div>';
+    return;
+  }
+  list.innerHTML = d.songs.map((s,i) => `
+    <div class="list-item">
+      <div class="delete-btn" onclick="deleteSong(${i})">×</div>
+      <div class="item-text">《${s.name}》</div>
+      <div class="item-meta">${s.mood}</div>
+    </div>
+  `).join('');
+}
+
+function renderGlobalStats() {
+  const d = getData();
+  document.getElementById('globalStats').innerHTML =
+    `<span class="stat">周深语录 <b>${d.quotes.length}</b></span>` +
+    `<span class="stat">可可/嫑嫑 <b>${d.cocoQuotes.length}</b></span>` +
+    `<span class="stat">整活建议 <b>${d.tips.length}</b></span>` +
+    `<span class="stat">歌曲 <b>${d.songs.length}</b></span>` +
+    `<span class="stat">跳过动画 <b>${d.skipAnims.length}</b></span>`;
+}
+
+// ===== Add =====
+function addQuote() {
+  const text = document.getElementById('newQuoteText').value.trim();
+  if (!text) { toast('请输入内容'); return; }
+  const source = document.getElementById('newQuoteSource').value.trim();
+  const type = document.getElementById('newQuoteType').value;
+  const tag = document.getElementById('newQuoteTag').value.trim() || (type === 'quote' ? '🎤 深深说' : '🤍 可可陪伴');
+
+  const item = { text, tag };
+  if (source) item.source = source;
+
+  if (type === 'quote') customData.quotes.push(item);
+  else customData.cocoQuotes.push(item);
+
+  saveCustom();
+  renderAll();
+  document.getElementById('newQuoteText').value = '';
+  document.getElementById('newQuoteSource').value = '';
+  document.getElementById('newQuoteTag').value = '';
+  toast('已添加 ✨');
+}
+
+function addTip() {
+  const text = document.getElementById('newTipText').value.trim();
+  if (!text) { toast('请输入内容'); return; }
+  customData.tips.push(text);
+  saveCustom();
+  renderAll();
+  document.getElementById('newTipText').value = '';
+  toast('已添加 ✨');
+}
+
+function addSong() {
+  const name = document.getElementById('newSongName').value.trim();
+  const mood = document.getElementById('newSongMood').value.trim();
+  if (!name) { toast('请输入歌名'); return; }
+  const song = { name, mood: mood || '🎵' };
+  const qq = document.getElementById('newSongQQ').value.trim();
+  const ne = document.getElementById('newSongNetease').value.trim();
+  if (qq) song.qqMusic = qq;
+  if (ne) song.neteaseId = ne;
+  customData.songs.push(song);
+  saveCustom();
+  renderAll();
+  document.getElementById('newSongName').value = '';
+  document.getElementById('newSongMood').value = '';
+  document.getElementById('newSongQQ').value = '';
+  document.getElementById('newSongNetease').value = '';
+  toast('已添加 ✨');
+}
+
+// ===== Delete =====
+function deleteQuote(type, idx) {
+  if (!confirm('确定删除这条语录吗？')) return;
+  if (type === 'quote') customData.quotes.splice(idx, 1);
+  else customData.cocoQuotes.splice(idx, 1);
+  saveCustom();
+  renderAll();
+  toast('已删除');
+}
+
+function deleteTip(idx) {
+  if (!confirm('确定删除这条建议吗？')) return;
+  customData.tips.splice(idx, 1);
+  saveCustom();
+  renderAll();
+  toast('已删除');
+}
+
+function deleteSong(idx) {
+  if (!confirm('确定删除这首歌吗？')) return;
+  customData.songs.splice(idx, 1);
+  saveCustom();
+  renderAll();
+  toast('已删除');
+}
+
+// ===== Search =====
+document.getElementById('quoteSearch').addEventListener('input', function() {
+  renderQuotes(this.value.trim());
+});
+document.getElementById('tipSearch').addEventListener('input', function() {
+  renderTips(this.value.trim());
+});
+
+// ===== Export =====
+function exportData() {
+  const d = getData();
+  const blob = new Blob([JSON.stringify(d, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.download = `跳过周一_数据备份_${new Date().toLocaleDateString('zh-CN')}.json`;
+  a.href = URL.createObjectURL(blob);
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('数据已导出 📤');
+}
+
+// ===== Import (merge) =====
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const imported = JSON.parse(ev.target.result);
+      let count = 0;
+
+      // Merge quotes
+      if (imported.quotes) {
+        const existing = new Set(customData.quotes.map(q => q.text));
+        imported.quotes.forEach(q => {
+          if (!existing.has(q.text)) { customData.quotes.push(q); count++; }
+        });
+      }
+      if (imported.cocoQuotes) {
+        const existing = new Set(customData.cocoQuotes.map(q => q.text));
+        imported.cocoQuotes.forEach(q => {
+          if (!existing.has(q.text)) { customData.cocoQuotes.push(q); count++; }
+        });
+      }
+      if (imported.tips) {
+        const existing = new Set(customData.tips);
+        imported.tips.forEach(t => {
+          if (!existing.has(t)) { customData.tips.push(t); count++; }
+        });
+      }
+      if (imported.songs) {
+        const existing = new Set(customData.songs.map(s => s.name));
+        imported.songs.forEach(s => {
+          if (!existing.has(s.name)) { customData.songs.push(s); count++; }
+        });
+      }
+      if (imported.skipAnims) {
+        const existing = new Set(customData.skipAnims.map(a => a.text));
+        imported.skipAnims.forEach(a => {
+          if (!existing.has(a.text)) { customData.skipAnims.push(a); count++; }
+        });
+      }
+
+      saveCustom();
+      renderAll();
+      toast(`已导入 ${count} 条新数据 ✨`);
+    } catch(err) {
+      toast('文件格式错误，请选择正确的备份文件');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+// ===== Reset =====
+function resetData() {
+  if (!confirm('⚠️ 确定要重置所有数据吗？\n\n你添加的所有自定义内容都会被删除！\n\n建议先导出备份。')) return;
+  if (!confirm('真的确定吗？这个操作不可撤销！')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  customData = JSON.parse(JSON.stringify(defaultData));
+  saveCustom();
+  renderAll();
+  toast('已重置为默认数据');
+}
+
+// ===== Init =====
+loadAll();
+</script>
+</body>
+</html>

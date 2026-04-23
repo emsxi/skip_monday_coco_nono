@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- 周可可：可可烘焙工坊主理人，棕色系，温柔安静 -->
+  <defs>
+    <linearGradient id="cocoBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF3E0"/>
+      <stop offset="100%" stop-color="#FFE0B2"/>
+    </linearGradient>
+  </defs>
+  <!-- 温暖的背景圆 -->
+  <circle cx="100" cy="100" r="96" fill="url(#cocoBg)" stroke="#8D6E63" stroke-width="1.5" opacity="0.4"/>
+  <!-- 身体 - 棕色衣服 -->
+  <ellipse cx="100" cy="152" rx="42" ry="38" fill="#6D4C41"/>
+  <!-- 衣领 -->
+  <path d="M72 128 Q100 138 128 128 L122 142 Q100 150 78 142 Z" fill="#795548"/>
+  <!-- 围裙 - 浅奶油色 -->
+  <path d="M75 135 L75 175 Q100 185 125 175 L125 135 Q100 145 75 135" fill="#EFEBE9"/>
+  <!-- 围裙带子 -->
+  <line x1="75" y1="135" x2="90" y2="128" stroke="#D7CCC8" stroke-width="2"/>
+  <line x1="125" y1="135" x2="110" y2="128" stroke="#D7CCC8" stroke-width="2"/>
+  <!-- 围裙口袋 -->
+  <rect x="88" y="152" width="24" height="16" rx="4" fill="#D7CCC8" opacity="0.6"/>
+  <!-- 口袋里的小搅拌棒 -->
+  <line x1="95" y1="152" x2="93" y2="145" stroke="#8D6E63" stroke-width="2" stroke-linecap="round"/>
+  <!-- 脸 - 圆润温柔 -->
+  <circle cx="100" cy="82" r="36" fill="#FFECB3"/>
+  <!-- 腮红 -->
+  <circle cx="74" cy="90" r="7" fill="#FFAB91" opacity="0.45"/>
+  <circle cx="126" cy="90" r="7" fill="#FFAB91" opacity="0.45"/>
+  <!-- 眼睛 - 温柔的弯弯眼（安静内敛） -->
+  <path d="M83 82 Q88 75 93 82" stroke="#5D4037" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M107 82 Q112 75 117 82" stroke="#5D4037" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- 温柔微笑 -->
+  <path d="M91 96 Q100 103 109 96" stroke="#5D4037" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- 厨师帽 / 贝雷帽 - 标志性的帽子，棕色系 -->
+  <ellipse cx="100" cy="52" rx="40" ry="10" fill="#5D4037"/>
+  <path d="M64 52 Q62 25 100 18 Q138 25 136 52" fill="#8D6E63"/>
+  <!-- 帽子上的蘑菇顶 -->
+  <circle cx="100" cy="20" r="8" fill="#A1887F"/>
+  <circle cx="100" cy="20" r="5" fill="#8D6E63"/>
+  <!-- 头发 - 从帽子下露出的棕色头发 -->
+  <path d="M65 55 Q63 65 68 72" stroke="#5D4037" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M135 55 Q137 65 132 72" stroke="#5D4037" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- 小巧克力装饰 -->
+  <rect x="108" y="40" width="8" height="6" rx="2" fill="#3E2723" opacity="0.6"/>
+  <!-- 手里拿着小面包/巧克力 -->
+  <g transform="translate(48, 130)">
+    <ellipse cx="0" cy="0" rx="10" ry="8" fill="#D7A86E" transform="rotate(-20)"/>
+    <ellipse cx="0" cy="-2" rx="8" ry="5" fill="#E8C07D" transform="rotate(-20)"/>
+  </g>
+</svg>
