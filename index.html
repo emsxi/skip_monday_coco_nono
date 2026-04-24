@@ -911,6 +911,7 @@ function bindEvents() {
     loadSong();
     vib(15);
     toast('已刷新 ✨');
+    setTimeout(saveSession, 500);
   });
 
   // Share
@@ -931,12 +932,58 @@ function bindEvents() {
   });
 }
 
+// ========== SESSION PERSISTENCE ==========
+function saveSession() {
+  try {
+    sessionStorage.setItem('skipMonday_session', JSON.stringify({
+      quote: curQuote,
+      song: curSong,
+      tip: $('tipText') ? $('tipText').textContent : ''
+    }));
+  } catch(e) {}
+}
+
+function restoreSession() {
+  try {
+    var s = sessionStorage.getItem('skipMonday_session');
+    if (!s) return false;
+    var saved = JSON.parse(s);
+    if (saved.quote && saved.quote.text) {
+      curQuote = saved.quote;
+      $('quoteText').textContent = '\u201C' + curQuote.text + '\u201D';
+      $('mascotTag').textContent = curQuote.tag;
+    }
+    if (saved.tip) {
+      $('tipText').textContent = saved.tip;
+    }
+    if (saved.song && saved.song.name) {
+      curSong = saved.song;
+      var songText = $('songText');
+      songText.innerHTML = '<div class="song-name">\u300A' + curSong.name + '\u300B</div><div class="song-mood">' + curSong.mood + '</div>';
+      var links = $('songLinks');
+      var linksHtml = '';
+      if (curSong.qqMusic) {
+        linksHtml += '<a class="song-link qq" href="' + curSong.qqMusic + '" target="_blank" rel="noopener">\uD83C\uDFB5 QQ\u97F3\u4E50</a>';
+      }
+      if (curSong.neteaseId) {
+        linksHtml += '<a class="song-link netease" href="https://music.163.com/song?id=' + curSong.neteaseId + '" target="_blank" rel="noopener">\uD83C\uDFB5 \u7F51\u6613\u4E91</a>';
+      }
+      links.innerHTML = linksHtml;
+    }
+    return true;
+  } catch(e) { return false; }
+}
+
 // ========== INIT ==========
 function initApp() {
   updateDate();
-  loadQuote();
-  loadTip();
-  loadSong();
+  // Try to restore previous session (e.g. when returning from music app)
+  if (!restoreSession()) {
+    loadQuote();
+    loadTip();
+    loadSong();
+    setTimeout(saveSession, 500);
+  }
 }
 
 (function boot() {
