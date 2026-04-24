@@ -1055,6 +1055,421 @@
       "name": "繁星",
       "mood": "仰望星空",
       "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003dCRtx3lBJ81"
+    },
+    {
+      "name": "漫长的问候",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000Fvg0o06q4S5"
+    },
+    {
+      "name": "热烈盛开",
+      "mood": "好听",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002Od4YI4Y4cC7"
+    },
+    {
+      "name": "修星星的人",
+      "mood": "治愈",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001LQ8ox0seA2B"
+    },
+    {
+      "name": "云裳羽衣曲",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000wXRGx2u2NJ8"
+    },
+    {
+      "name": "吉量",
+      "mood": "治愈",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004VCyBy391azx"
+    },
+    {
+      "name": "占有",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002Rrnzd4CYJDm"
+    },
+    {
+      "name": "小美满",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002QvWwX1BG9mr"
+    },
+    {
+      "name": "地球没有你",
+      "mood": "好听",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003wEBK91TbO25"
+    },
+    {
+      "name": "想见到气血满满的你",
+      "mood": "感动",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003aHwoB1aRrsw"
+    },
+    {
+      "name": "璀璨冒险人",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000zmMlz1J0bsy"
+    },
+    {
+      "name": "求真",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0020hNbf1gfb9f"
+    },
+    {
+      "name": "元来是这样～",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0031nN9E23PD9B"
+    },
+    {
+      "name": "来啊",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003V4lkA1dpSrC"
+    },
+    {
+      "name": "梦见你",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004bnFMj49UFJY"
+    },
+    {
+      "name": "全世界下雨",
+      "mood": "励志",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000jOos82Ntz8Y"
+    },
+    {
+      "name": "没关系",
+      "mood": "安静",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001EGnjy1qhO94"
+    },
+    {
+      "name": "初醒",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0046Xsvh0KusVb"
+    },
+    {
+      "name": "重启",
+      "mood": "治愈",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002Xjn9r215ehH"
+    },
+    {
+      "name": "月之纪",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002YQr8W49J1SW"
+    },
+    {
+      "name": "聊聊",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003PESX73p6nUI"
+    },
+    {
+      "name": "春雪",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0034Ykph3iVfpt"
+    },
+    {
+      "name": "Wala li longla",
+      "mood": "感动",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0015sIpZ4CYA8X"
+    },
+    {
+      "name": "时间啊",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004aezr634jY5l"
+    },
+    {
+      "name": "万里",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003QZWjS4XPNk0"
+    },
+    {
+      "name": "空壳",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003KAMkE38B4i6"
+    },
+    {
+      "name": "虚构",
+      "mood": "好听",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001IbstZ4bqMpD"
+    },
+    {
+      "name": "警报",
+      "mood": "好听",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001Ms67n2CZw1q"
+    },
+    {
+      "name": "总有美好在路上",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001ZNscG31RE5d"
+    },
+    {
+      "name": "我以渺小爱你",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000EpEPF1ISlQO"
+    },
+    {
+      "name": "记忆商店",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0047wVWr3JcjfC"
+    },
+    {
+      "name": "怜悯",
+      "mood": "温暖",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004EKkP51s2BzK"
+    },
+    {
+      "name": "请我不改",
+      "mood": "大气",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002qdxkv42Tpzb"
+    },
+    {
+      "name": "逃开夜幕",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000f6hwn1dNSxL"
+    },
+    {
+      "name": "遗失的日子",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001gEjVt0BqHSE"
+    },
+    {
+      "name": "空荡荡",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003PAfkI3F4j9n"
+    },
+    {
+      "name": "人是_",
+      "mood": "励志",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001zuNRq15kB7v"
+    },
+    {
+      "name": "我的对",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001C8UAi1Tc257"
+    },
+    {
+      "name": "晚风请你告诉她",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003pr8LO4YyvLd"
+    },
+    {
+      "name": "时差",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003X89oN2uVjDK"
+    },
+    {
+      "name": "背着山的人",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001fqYZt4WHHIg"
+    },
+    {
+      "name": "天海一心",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003YhBGH06zt6a"
+    },
+    {
+      "name": "告别旅行",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001UbIjf07iudU"
+    },
+    {
+      "name": "自诩周全",
+      "mood": "安静",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002nmWBZ153kT4"
+    },
+    {
+      "name": "爱丽丝卿",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003HQuYS2p4kdi"
+    },
+    {
+      "name": "心同此愿",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001yPlwE0XaEGK"
+    },
+    {
+      "name": "梅香如故",
+      "mood": "励志",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003olD751EQ2Ul"
+    },
+    {
+      "name": "漫漫",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000qBZkb2Qz2i9"
+    },
+    {
+      "name": "有我",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001xry3E1oVKTU"
+    },
+    {
+      "name": "嗨！人间",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000981Sn1Locxq"
+    },
+    {
+      "name": "好好生活就是美好生活",
+      "mood": "温暖",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003cDEFF0oQAKb"
+    },
+    {
+      "name": "要一起",
+      "mood": "励志",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000qUMkO3ukMC2"
+    },
+    {
+      "name": "歌曲：吉量",
+      "mood": "好听",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000zv9mR16R8jM"
+    },
+    {
+      "name": "蜃楼",
+      "mood": "大气",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/00103MrP45XbHm"
+    },
+    {
+      "name": "一路生花",
+      "mood": "感动",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002jliuw1LM7YT"
+    },
+    {
+      "name": "逆光",
+      "mood": "大气",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001IOrTz1Qf1cE"
+    },
+    {
+      "name": "好春光",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004KR7cF2zV8Ag"
+    },
+    {
+      "name": "造物",
+      "mood": "治愈",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003Ijy5q3gZciz"
+    },
+    {
+      "name": "漂洋过海来看你",
+      "mood": "感动",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003P20Zd3RYfoI"
+    },
+    {
+      "name": "Crush",
+      "mood": "感动",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003ms8cq2bGiKG"
+    },
+    {
+      "name": "瞳 (出类拔萃)",
+      "mood": "安静",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002Je6AD34d6YA"
+    },
+    {
+      "name": "触不可及",
+      "mood": "深情",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002EFRnf3ekI9S"
+    },
+    {
+      "name": "奔腾",
+      "mood": "治愈",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000NhXDd2P0d6V"
+    },
+    {
+      "name": "扑通扑通",
+      "mood": "安静",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004Ws2fO4HXbKd"
+    },
+    {
+      "name": "生活总该迎着光亮",
+      "mood": "治愈",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002WAUDV2CwHe2"
+    },
+    {
+      "name": "浮游",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001spUvC1sa7qM"
+    },
+    {
+      "name": "铃芽之旅",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001DOs0n2E7ttc"
+    },
+    {
+      "name": "深 Intro",
+      "mood": "感动",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004EJCm54Lvgxe"
+    },
+    {
+      "name": "等光来",
+      "mood": "励志",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001xgLYf1gcdX3"
+    },
+    {
+      "name": "接财运",
+      "mood": "温暖",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003FYnmA2KmMXg"
+    },
+    {
+      "name": "雨季又来临",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003WRano0L4LqL"
+    },
+    {
+      "name": "嗨",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0026jsBv3wjX75"
+    },
+    {
+      "name": "只字不提",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003e2bKk2r1xkc"
+    },
+    {
+      "name": "心海里的光",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002nGIkc3NfjEz"
+    },
+    {
+      "name": "马上好事来",
+      "mood": "空灵",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004XH317152Upo"
+    },
+    {
+      "name": "山���",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003ZUlty4GSkLc"
+    },
+    {
+      "name": "消散人潮",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/001mI6U31u6ynj"
+    },
+    {
+      "name": "选择",
+      "mood": "励志",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002LbZMr3NfNPI"
+    },
+    {
+      "name": "我想你了",
+      "mood": "古风",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/0003GfBD0R93ru"
+    },
+    {
+      "name": "遥遥",
+      "mood": "励志",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002CJbQ93nSKjz"
+    },
+    {
+      "name": "我爱你中国",
+      "mood": "安静",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/004KrMkl3saUAI"
+    },
+    {
+      "name": "桃花诺",
+      "mood": "温暖",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/002RrEFL49B5ae"
+    },
+    {
+      "name": "有山有海有你",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000jqglF3fsOfh"
+    },
+    {
+      "name": "谜宫",
+      "mood": "甜蜜",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003tDobe1T8YQJ"
     }
   ],
   "skipAnims": [
