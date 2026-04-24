@@ -2,7 +2,7 @@
 const https = require('https');
 const fs = require('fs');
 
-const DATA_PATH = '/Users/elsietan/WorkBuddy/跳过周一/monday-skipper/data.json';
+const DATA_PATH = __dirname + '/data.json';
 
 // Fetch Zhou Shen's song list from QQ Music singer page API
 // Zhou Shen's singer_mid on QQ Music: 0025NhlN2yWrP4
