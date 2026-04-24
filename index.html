@@ -722,8 +722,8 @@ function loadSong() {
     if (curSong.qqMusic) {
       linksHtml += '<a class="song-link qq" href="' + curSong.qqMusic + '" target="_blank" rel="noopener">\uD83C\uDFB5 QQ\u97F3\u4E50</a>';
     }
-    if (curSong.neteaseId) {
-      linksHtml += '<a class="song-link netease" href="https://music.163.com/song?id=' + curSong.neteaseId + '" target="_blank" rel="noopener">\uD83C\uDFB5 \u7F51\u6613\u4E91</a>';
+    if (curSong.neteaseMusic) {
+      linksHtml += '<a class="song-link netease" href="' + curSong.neteaseMusic + '" target="_blank" rel="noopener">\uD83C\uDFB5 \u7F51\u6613\u4E91</a>';
     }
     links.innerHTML = linksHtml;
     card.style.opacity = '1'; card.style.transform = 'translateY(0)';
@@ -965,8 +965,8 @@ function restoreSession() {
       if (curSong.qqMusic) {
         linksHtml += '<a class="song-link qq" href="' + curSong.qqMusic + '" target="_blank" rel="noopener">\uD83C\uDFB5 QQ\u97F3\u4E50</a>';
       }
-      if (curSong.neteaseId) {
-        linksHtml += '<a class="song-link netease" href="https://music.163.com/song?id=' + curSong.neteaseId + '" target="_blank" rel="noopener">\uD83C\uDFB5 \u7F51\u6613\u4E91</a>';
+      if (curSong.neteaseMusic) {
+        linksHtml += '<a class="song-link netease" href="' + curSong.neteaseMusic + '" target="_blank" rel="noopener">\uD83C\uDFB5 \u7F51\u6613\u4E91</a>';
       }
       links.innerHTML = linksHtml;
     }
