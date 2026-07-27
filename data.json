@@ -1670,6 +1670,16 @@
       "name": "避难所/Sanctuary",
       "mood": "治愈",
       "qqMusic": "https://y.qq.com/n/ryqq/songDetail/003lbnjE37FuPW"
+    },
+    {
+      "name": "如约",
+      "mood": "欢乐",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000uTZAI1djRlw"
+    },
+    {
+      "name": "全世界的雨",
+      "mood": "好听",
+      "qqMusic": "https://y.qq.com/n/ryqq/songDetail/000R5lKk0KJBgG"
     }
   ],
   "skipAnims": [
